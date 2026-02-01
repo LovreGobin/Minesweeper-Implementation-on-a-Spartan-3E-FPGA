@@ -1,0 +1,40 @@
+INFO: [HD-Application 1] Opened log file /home/george/Electronics/FPGA/Mouse2/planAhead_run_1/planAhead.log
+INFO: [HD-Application 2] Opened journal file /home/george/Electronics/FPGA/Mouse2/planAhead_run_1/planAhead.jou
+#-----------------------------------------------------------
+# PlanAhead v12.1
+# Build 61553 by hdbuild on Fri Apr 23 09:36:46 PDT 2010
+# Start of session at: 8/4/11 10:04:50 PM
+# Process ID: 11876
+#-----------------------------------------------------------
+source /home/george/Electronics/FPGA/Mouse2/pa.fromHdl.tcl
+# create_project -name Mouse2 -dir "/home/george/Electronics/FPGA/Mouse2/planAhead_run_1" -part xc3s500efg320-4
+# set_param project.pinAheadLayout yes
+# set srcset [get_property srcset [current_run -impl]]
+# set_property top Mouse_Test $srcset
+# set_param project.paUcfFile  "Mouse_Test.ucf"
+# set hdlfile [add_files [list {ps2_mouse_interface.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {Mouse_Test.v}]]
+# set_property file_type Verilog $hdlfile
+# set_property library work $hdlfile
+# add_files "Mouse_Test.ucf" -fileset [get_property constrset [current_run]]
+# open_rtl_design -part xc3s500efg320-4
+INFO: [HD-RTLIN 2] Parsing VHDL file "/opt/Xilinx/12.1/ISE_DS/PlanAhead/parts/xilinx/rtl/lib/synplify/synattr.vhd" into library synplify
+INFO: [HD-RTLIN 2] Parsing package <attributes>.
+INFO: [HD-RTLIN 2] Parsing Verilog file "/home/george/Electronics/FPGA/Mouse2/ps2_mouse_interface.v" into library work
+INFO: [HD-RTLIN 2] Parsing module <ps2_mouse_interface>.
+WARN: [HD-RTLIN 1] /home/george/Electronics/FPGA/Mouse2/ps2_mouse_interface.v(140) Empty port in module declaration
+ERROR: [HD-RTLIN 3] /home/george/Electronics/FPGA/Mouse2/ps2_mouse_interface.v(198) Port LED_0 is not defined
+ERROR: [HD-RTLIN 3] /home/george/Electronics/FPGA/Mouse2/ps2_mouse_interface.v(128) Module <ps2_mouse_interface> ignored due to previous errors.
+INFO: [HD-RTLIN 2] Verilog file /home/george/Electronics/FPGA/Mouse2/ps2_mouse_interface.v ignored due to errors
+INFO: [HD-RTLIN 2] Parsing Verilog file "/home/george/Electronics/FPGA/Mouse2/Mouse_Test.v" into library work
+INFO: [HD-RTLIN 2] Parsing module <Mouse_Test>.
+ERROR: [HD-RTLIN 3] /home/george/Electronics/FPGA/Mouse2/Mouse_Test.v(29) Ordered port connections cannot be mixed with named port connections
+ERROR: [HD-RTLIN 3] /home/george/Electronics/FPGA/Mouse2/Mouse_Test.v(21) Module <Mouse_Test> ignored due to previous errors.
+INFO: [HD-RTLIN 2] Verilog file /home/george/Electronics/FPGA/Mouse2/Mouse_Test.v ignored due to errors
+ERROR: Unable to process your HDL design.  Please review Elaboration Messages. 
+#-----------------------------------------------------------
+# End of session at: 8/4/11 10:05:05 PM
+# Process ID: 11876
+#-----------------------------------------------------------

@@ -1,0 +1,5 @@
+set -tmpdir "C:/Users/Student/Desktop/lg mf mg/Minesweeper/xst/projnav.tmp"
+set -xsthdpdir "C:/Users/Student/Desktop/lg mf mg/Minesweeper/xst"
+elaborate
+-ifn mouse.prj
+-ifmt mixed

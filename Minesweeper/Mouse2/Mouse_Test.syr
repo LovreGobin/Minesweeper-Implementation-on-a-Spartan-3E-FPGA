@@ -1,0 +1,525 @@
+Release 12.1 - xst M.53d (lin64)
+Copyright (c) 1995-2010 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.05 secs
+ 
+--> 
+Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.06 secs
+ 
+--> 
+Reading design: Mouse_Test.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "Mouse_Test.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "Mouse_Test"
+Output Format                      : NGC
+Target Device                      : xc3s500e-4-fg320
+
+---- Source Options
+Top Module Name                    : Mouse_Test
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : lut
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : YES
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : YES
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 500
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Library Search Order               : Mouse_Test.lso
+Keep Hierarchy                     : NO
+Netlist Hierarchy                  : as_optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "ps2_mouse_interface.v" in library work
+Compiling verilog file "Mouse_Test.v" in library work
+Module <ps2_mouse_interface> compiled
+Module <Mouse_Test> compiled
+No errors in compilation
+Analysis of file <"Mouse_Test.prj"> succeeded.
+ 
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for module <Mouse_Test> in library <work>.
+
+Analyzing hierarchy for module <ps2_mouse_interface> in library <work> with parameters.
+	DEBOUNCE_TIMER_BITS_PP = "00000000000000000000000000001000"
+	DEBOUNCE_TIMER_VALUE_PP = "00000000000000000000000010111010"
+	WATCHDOG_TIMER_BITS_PP = "00000000000000000000000000001111"
+	WATCHDOG_TIMER_VALUE_PP = "00000000000000000100111000100000"
+	m1_clk_h = "00000000000000000000000000000000"
+	m1_clk_l = "00000000000000000000000000000010"
+	m1_falling_edge = "00000000000000000000000000000001"
+	m1_falling_wait = "00000000000000000000000000000011"
+	m1_rising_edge = "00000000000000000000000000000110"
+	m1_rising_wait = "00000000000000000000000000000100"
+	m2_await_response = "00000000000000000000000000001010"
+	m2_data_high_1 = "00000000000000000000000000000101"
+	m2_data_high_2 = "00000000000000000000000000001000"
+	m2_data_high_3 = "00000000000000000000000000001011"
+	m2_data_low_1 = "00000000000000000000000000000100"
+	m2_data_low_2 = "00000000000000000000000000000111"
+	m2_data_low_3 = "00000000000000000000000000001001"
+	m2_error_no_ack = "00000000000000000000000000001111"
+	m2_gather = "00000000000000000000000000000001"
+	m2_hold_clk_l = "00000000000000000000000000000110"
+	m2_reset = "00000000000000000000000000001110"
+	m2_use = "00000000000000000000000000000010"
+	m2_verify = "00000000000000000000000000000011"
+	m2_wait = "00000000000000000000000000000000"
+	m3_data_ready = "00000000000000000000000000000001"
+	m3_data_ready_ack = "00000000000000000000000000000000"
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <Mouse_Test>.
+WARNING:Xst:852 - "Mouse_Test.v" line 35: Unconnected input port 'reset' of instance 'mouse' is tied to GND.
+WARNING:Xst:852 - "Mouse_Test.v" line 35: Unconnected input port 'read' of instance 'mouse' is tied to GND.
+Module <Mouse_Test> is correct for synthesis.
+ 
+Analyzing module <ps2_mouse_interface> in library <work>.
+	DEBOUNCE_TIMER_BITS_PP = 32'sb00000000000000000000000000001000
+	DEBOUNCE_TIMER_VALUE_PP = 32'sb00000000000000000000000010111010
+	WATCHDOG_TIMER_BITS_PP = 32'sb00000000000000000000000000001111
+	WATCHDOG_TIMER_VALUE_PP = 32'sb00000000000000000100111000100000
+	m1_clk_h = 32'sb00000000000000000000000000000000
+	m1_clk_l = 32'sb00000000000000000000000000000010
+	m1_falling_edge = 32'sb00000000000000000000000000000001
+	m1_falling_wait = 32'sb00000000000000000000000000000011
+	m1_rising_edge = 32'sb00000000000000000000000000000110
+	m1_rising_wait = 32'sb00000000000000000000000000000100
+	m2_await_response = 32'sb00000000000000000000000000001010
+	m2_data_high_1 = 32'sb00000000000000000000000000000101
+	m2_data_high_2 = 32'sb00000000000000000000000000001000
+	m2_data_high_3 = 32'sb00000000000000000000000000001011
+	m2_data_low_1 = 32'sb00000000000000000000000000000100
+	m2_data_low_2 = 32'sb00000000000000000000000000000111
+	m2_data_low_3 = 32'sb00000000000000000000000000001001
+	m2_error_no_ack = 32'sb00000000000000000000000000001111
+	m2_gather = 32'sb00000000000000000000000000000001
+	m2_hold_clk_l = 32'sb00000000000000000000000000000110
+	m2_reset = 32'sb00000000000000000000000000001110
+	m2_use = 32'sb00000000000000000000000000000010
+	m2_verify = 32'sb00000000000000000000000000000011
+	m2_wait = 32'sb00000000000000000000000000000000
+	m3_data_ready = 32'sb00000000000000000000000000000001
+	m3_data_ready_ack = 32'sb00000000000000000000000000000000
+Module <ps2_mouse_interface> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <ps2_mouse_interface>.
+    Related source file is "ps2_mouse_interface.v".
+WARNING:Xst:737 - Found 1-bit latch for signal <data_ready>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+    Found 1-bit tristate buffer for signal <ps2_clk>.
+    Found 1-bit tristate buffer for signal <ps2_data>.
+    Found 1-bit register for signal <right_button>.
+    Found 1-bit register for signal <left_button>.
+    Found 9-bit register for signal <x_increment>.
+    Found 9-bit register for signal <y_increment>.
+    Found 6-bit up counter for signal <bit_count>.
+    Found 8-bit up counter for signal <debounce_timer_count>.
+    Found 3-bit register for signal <m1_state>.
+    Found 6-bit comparator less for signal <m2_next_state$cmp_lt0000> created at line 340.
+    Found 4-bit register for signal <m2_state>.
+    Found 1-bit register for signal <m3_state>.
+    Found 1-bit xor8 for signal <packet_good$xor0000>.
+    Found 1-bit xor2 for signal <packet_good$xor0001> created at line 516.
+    Found 1-bit xor8 for signal <packet_good$xor0002>.
+    Found 1-bit xor2 for signal <packet_good$xor0003> created at line 516.
+    Found 1-bit xor8 for signal <packet_good$xor0004>.
+    Found 1-bit xor2 for signal <packet_good$xor0005> created at line 516.
+    Found 33-bit register for signal <q>.
+    Found 15-bit up counter for signal <watchdog_timer_count>.
+    Summary:
+	inferred   3 Counter(s).
+	inferred  61 D-type flip-flop(s).
+	inferred   1 Comparator(s).
+	inferred   3 Xor(s).
+	inferred   2 Tristate(s).
+Unit <ps2_mouse_interface> synthesized.
+
+
+Synthesizing Unit <Mouse_Test>.
+    Related source file is "Mouse_Test.v".
+WARNING:Xst:646 - Signal <YMovement<8:3>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <XMovement<8:3>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+Unit <Mouse_Test> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Counters                                             : 3
+ 15-bit up counter                                     : 1
+ 6-bit up counter                                      : 1
+ 8-bit up counter                                      : 1
+# Registers                                            : 8
+ 1-bit register                                        : 3
+ 3-bit register                                        : 1
+ 33-bit register                                       : 1
+ 4-bit register                                        : 1
+ 9-bit register                                        : 2
+# Latches                                              : 1
+ 1-bit latch                                           : 1
+# Comparators                                          : 1
+ 6-bit comparator less                                 : 1
+# Tristates                                            : 2
+ 1-bit tristate buffer                                 : 2
+# Xors                                                 : 6
+ 1-bit xor2                                            : 3
+ 1-bit xor8                                            : 3
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+WARNING:Xst:2677 - Node <x_increment_3> of sequential type is unconnected in block <mouse>.
+WARNING:Xst:2677 - Node <x_increment_4> of sequential type is unconnected in block <mouse>.
+WARNING:Xst:2677 - Node <x_increment_5> of sequential type is unconnected in block <mouse>.
+WARNING:Xst:2677 - Node <x_increment_6> of sequential type is unconnected in block <mouse>.
+WARNING:Xst:2677 - Node <x_increment_7> of sequential type is unconnected in block <mouse>.
+WARNING:Xst:2677 - Node <x_increment_8> of sequential type is unconnected in block <mouse>.
+WARNING:Xst:2677 - Node <y_increment_3> of sequential type is unconnected in block <mouse>.
+WARNING:Xst:2677 - Node <y_increment_4> of sequential type is unconnected in block <mouse>.
+WARNING:Xst:2677 - Node <y_increment_5> of sequential type is unconnected in block <mouse>.
+WARNING:Xst:2677 - Node <y_increment_6> of sequential type is unconnected in block <mouse>.
+WARNING:Xst:2677 - Node <y_increment_7> of sequential type is unconnected in block <mouse>.
+WARNING:Xst:2677 - Node <y_increment_8> of sequential type is unconnected in block <mouse>.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Counters                                             : 3
+ 15-bit up counter                                     : 1
+ 6-bit up counter                                      : 1
+ 8-bit up counter                                      : 1
+# Registers                                            : 61
+ Flip-Flops                                            : 61
+# Latches                                              : 1
+ 1-bit latch                                           : 1
+# Comparators                                          : 1
+ 6-bit comparator less                                 : 1
+# Xors                                                 : 6
+ 1-bit xor2                                            : 3
+ 1-bit xor8                                            : 3
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1710 - FF/Latch <m3_state> (without init value) has a constant value of 1 in block <ps2_mouse_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_ready> (without init value) has a constant value of 1 in block <ps2_mouse_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <mouse/y_increment_8> of sequential type is unconnected in block <Mouse_Test>.
+WARNING:Xst:2677 - Node <mouse/y_increment_7> of sequential type is unconnected in block <Mouse_Test>.
+WARNING:Xst:2677 - Node <mouse/y_increment_6> of sequential type is unconnected in block <Mouse_Test>.
+WARNING:Xst:2677 - Node <mouse/y_increment_5> of sequential type is unconnected in block <Mouse_Test>.
+WARNING:Xst:2677 - Node <mouse/y_increment_4> of sequential type is unconnected in block <Mouse_Test>.
+WARNING:Xst:2677 - Node <mouse/y_increment_3> of sequential type is unconnected in block <Mouse_Test>.
+WARNING:Xst:2677 - Node <mouse/x_increment_8> of sequential type is unconnected in block <Mouse_Test>.
+WARNING:Xst:2677 - Node <mouse/x_increment_7> of sequential type is unconnected in block <Mouse_Test>.
+WARNING:Xst:2677 - Node <mouse/x_increment_6> of sequential type is unconnected in block <Mouse_Test>.
+WARNING:Xst:2677 - Node <mouse/x_increment_5> of sequential type is unconnected in block <Mouse_Test>.
+WARNING:Xst:2677 - Node <mouse/x_increment_4> of sequential type is unconnected in block <Mouse_Test>.
+WARNING:Xst:2677 - Node <mouse/x_increment_3> of sequential type is unconnected in block <Mouse_Test>.
+
+Optimizing unit <Mouse_Test> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block Mouse_Test, actual ratio is 1.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 77
+ Flip-Flops                                            : 77
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : Mouse_Test.ngr
+Top Level Output File Name         : Mouse_Test
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : NO
+
+Design Statistics
+# IOs                              : 11
+
+Cell Usage :
+# BELS                             : 153
+#      GND                         : 1
+#      INV                         : 3
+#      LUT1                        : 21
+#      LUT2                        : 5
+#      LUT2_L                      : 2
+#      LUT3                        : 11
+#      LUT3_D                      : 4
+#      LUT3_L                      : 2
+#      LUT4                        : 44
+#      LUT4_D                      : 1
+#      LUT4_L                      : 11
+#      MUXCY                       : 21
+#      MUXF5                       : 3
+#      VCC                         : 1
+#      XORCY                       : 23
+# FlipFlops/Latches                : 77
+#      FD                          : 2
+#      FDE                         : 41
+#      FDR                         : 9
+#      FDRE                        : 21
+#      FDRS                        : 1
+#      FDS                         : 3
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 10
+#      IOBUF                       : 2
+#      OBUF                        : 8
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s500efg320-4 
+
+ Number of Slices:                       65  out of   4656     1%  
+ Number of Slice Flip Flops:             77  out of   9312     0%  
+ Number of 4 input LUTs:                104  out of   9312     1%  
+ Number of IOs:                          11
+ Number of bonded IOBs:                  11  out of    232     4%  
+ Number of GCLKs:                         1  out of     24     4%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+CLK_50MHZ                          | BUFGP                  | 77    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 7.607ns (Maximum Frequency: 131.458MHz)
+   Minimum input arrival time before clock: 4.947ns
+   Maximum output required time after clock: 6.247ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'CLK_50MHZ'
+  Clock period: 7.607ns (frequency: 131.458MHz)
+  Total number of paths / destination ports: 1042 / 173
+-------------------------------------------------------------------------
+Delay:               7.607ns (Levels of Logic = 6)
+  Source:            mouse/q_4 (FF)
+  Destination:       mouse/m2_state_1 (FF)
+  Source Clock:      CLK_50MHZ rising
+  Destination Clock: CLK_50MHZ rising
+
+  Data Path: mouse/q_4 to mouse/m2_state_1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              2   0.591   0.622  mouse/q_4 (mouse/q_4)
+     LUT4:I0->O            1   0.704   0.455  mouse/Mxor_packet_good_xor0000_xo<0>4 (mouse/Mxor_packet_good_xor0000_xo<0>4)
+     LUT3:I2->O            1   0.704   0.424  mouse/m2_next_state<1>170_SW0 (N12)
+     LUT4:I3->O            1   0.704   0.455  mouse/m2_next_state<1>170 (mouse/m2_next_state<1>170)
+     LUT4:I2->O            1   0.704   0.424  mouse/m2_next_state<1>240_SW0 (N14)
+     LUT4_L:I3->LO         1   0.704   0.104  mouse/m2_next_state<1>293 (mouse/m2_next_state<1>293)
+     LUT4:I3->O            1   0.704   0.000  mouse/m2_next_state<1>317 (mouse/m2_next_state<1>)
+     FD:D                      0.308          mouse/m2_state_1
+    ----------------------------------------
+    Total                      7.607ns (5.123ns logic, 2.484ns route)
+                                       (67.3% logic, 32.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'CLK_50MHZ'
+  Total number of paths / destination ports: 5 / 5
+-------------------------------------------------------------------------
+Offset:              4.947ns (Levels of Logic = 3)
+  Source:            PS2_DATA (PAD)
+  Destination:       mouse/m2_state_2 (FF)
+  Destination Clock: CLK_50MHZ rising
+
+  Data Path: PS2_DATA to mouse/m2_state_2
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IOBUF:IO->O           3   1.218   0.566  PS2_DATA_IOBUF (N9)
+     LUT3:I2->O            1   0.704   0.424  mouse/m2_next_state<2>4 (mouse/m2_next_state<2>4)
+     LUT4:I3->O            1   0.704   0.420  mouse/m2_next_state<2>11 (mouse/m2_next_state<2>11)
+     FDS:S                     0.911          mouse/m2_state_2
+    ----------------------------------------
+    Total                      4.947ns (3.537ns logic, 1.410ns route)
+                                       (71.5% logic, 28.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'CLK_50MHZ'
+  Total number of paths / destination ports: 16 / 10
+-------------------------------------------------------------------------
+Offset:              6.247ns (Levels of Logic = 2)
+  Source:            mouse/m2_state_3 (FF)
+  Destination:       PS2_DATA (PAD)
+  Source Clock:      CLK_50MHZ rising
+
+  Data Path: mouse/m2_state_3 to PS2_DATA
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDS:C->Q             19   0.591   1.260  mouse/m2_state_3 (mouse/m2_state_3)
+     LUT4:I0->O            1   0.704   0.420  mouse/ps2_data_hi_z_or0000_inv1 (mouse/ps2_data_hi_z_or0000_inv)
+     IOBUF:T->IO               3.272          PS2_DATA_IOBUF (PS2_DATA)
+    ----------------------------------------
+    Total                      6.247ns (4.567ns logic, 1.680ns route)
+                                       (73.1% logic, 26.9% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 6.00 secs
+Total CPU time to Xst completion: 6.39 secs
+ 
+--> 
+
+
+Total memory usage is 347096 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   31 (   0 filtered)
+Number of infos    :    1 (   0 filtered)
+

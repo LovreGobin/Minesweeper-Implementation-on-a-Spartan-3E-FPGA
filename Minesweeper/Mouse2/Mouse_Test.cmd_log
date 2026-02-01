@@ -1,0 +1,22 @@
+xst -intstyle ise -ifn "/home/george/Electronics/FPGA/Mouse2/Mouse_Test.xst" -ofn "/home/george/Electronics/FPGA/Mouse2/Mouse_Test.syr" 
+xst -intstyle ise -ifn "/home/george/Electronics/FPGA/Mouse2/Mouse_Test.xst" -ofn "/home/george/Electronics/FPGA/Mouse2/Mouse_Test.syr" 
+xst -intstyle ise -ifn "/home/george/Electronics/FPGA/Mouse2/Mouse_Test.xst" -ofn "/home/george/Electronics/FPGA/Mouse2/Mouse_Test.syr" 
+xst -intstyle ise -ifn "/home/george/Electronics/FPGA/Mouse2/Mouse_Test.xst" -ofn "/home/george/Electronics/FPGA/Mouse2/Mouse_Test.syr" 
+xst -intstyle ise -ifn "/home/george/Electronics/FPGA/Mouse2/Mouse_Test.xst" -ofn "/home/george/Electronics/FPGA/Mouse2/Mouse_Test.syr" 
+xst -intstyle ise -ifn "/home/george/Electronics/FPGA/Mouse2/Mouse_Test.xst" -ofn "/home/george/Electronics/FPGA/Mouse2/Mouse_Test.syr" 
+xst -intstyle ise -ifn "/home/george/Electronics/FPGA/Mouse2/Mouse_Test.xst" -ofn "/home/george/Electronics/FPGA/Mouse2/Mouse_Test.syr" 
+xst -intstyle ise -ifn "/home/george/Electronics/FPGA/Mouse2/Mouse_Test.xst" -ofn "/home/george/Electronics/FPGA/Mouse2/Mouse_Test.syr" 
+xst -intstyle ise -ifn "/home/george/Electronics/FPGA/Mouse2/Mouse_Test.xst" -ofn "/home/george/Electronics/FPGA/Mouse2/Mouse_Test.syr" 
+xst -intstyle ise -ifn "/home/george/Electronics/FPGA/Mouse2/Mouse_Test.xst" -ofn "/home/george/Electronics/FPGA/Mouse2/Mouse_Test.syr" 
+xst -intstyle ise -ifn "/home/george/Electronics/FPGA/Mouse2/Mouse_Test.xst" -ofn "/home/george/Electronics/FPGA/Mouse2/Mouse_Test.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc Mouse_Test.ucf -p xc3s500e-fg320-4 Mouse_Test.ngc Mouse_Test.ngd  
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc Mouse_Test.ucf -p xc3s500e-fg320-4 Mouse_Test.ngc Mouse_Test.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o Mouse_Test_map.ncd Mouse_Test.ngd Mouse_Test.pcf 
+par -w -intstyle ise -ol high -t 1 Mouse_Test_map.ncd Mouse_Test.ncd Mouse_Test.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml Mouse_Test.twx Mouse_Test.ncd -o Mouse_Test.twr Mouse_Test.pcf -ucf Mouse_Test.ucf 
+bitgen -intstyle ise -f Mouse_Test.ut Mouse_Test.ncd 
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o Mouse_Test_map.ncd Mouse_Test.ngd Mouse_Test.pcf 
+par -w -intstyle ise -ol high -t 1 Mouse_Test_map.ncd Mouse_Test.ncd Mouse_Test.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml Mouse_Test.twx Mouse_Test.ncd -o Mouse_Test.twr Mouse_Test.pcf -ucf Mouse_Test.ucf 
+bitgen -intstyle ise -f Mouse_Test.ut Mouse_Test.ncd 
+bitgen -intstyle ise -f Mouse_Test.ut Mouse_Test.ncd 

@@ -1,0 +1,17 @@
+[Inputs]
+clk
+reset
+read
+[Outputs]
+left_button
+right_button
+data_ready
+error_no_ack
+=x_increment[8:0]=
+=y_increment[8:0]=
+[BiDir]
+ps2_clk
+ps2_data
+[ATTRIBUTES]
+VeriModel ps2_mouse_interface
+

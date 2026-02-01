@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=C:\Users\Student\Desktop\lg mf mg 3\Minesweeper\Ploca.ncd
+OUTFILE=C:\Users\Student\Desktop\lg mf mg 3\Minesweeper\Ploca.bit
+FAMILY=Spartan3E
+PART=xc3s500e-5fg320
+WORKINGDIR=C:\Users\Student\Desktop\lg mf mg 3\Minesweeper
+LICENSE=WebPack
+USER_INFO=211372236_1777517795_0_432

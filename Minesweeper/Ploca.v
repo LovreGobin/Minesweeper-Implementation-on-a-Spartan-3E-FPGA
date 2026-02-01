@@ -1,0 +1,1027 @@
+`timescale 1ns / 1ps
+
+module Ploca(
+    input wire CLK,
+    inout wire PS2_DATA, PS2_CLK,
+    input wire RESET,
+    input wire SW0,
+    output VGA_HSYNC, VGA_VSYNC,
+    output VGA_G, VGA_B, VGA_R,
+	 output [7:0] led_state
+);
+
+// Clock divider za 25 MHz (od 50 MHz)
+reg clk25 = 0;
+always @(posedge CLK) begin
+    clk25 <= ~clk25;
+end
+
+reg game_over = 0, game_win = 0;
+
+// VGA 640x480@60Hz timing parametri
+parameter h_display = 640;
+parameter h_frontporch = 16;
+parameter h_syncwidth = 96;
+parameter h_backporch = 48;
+parameter h_total = 800;
+
+parameter v_display = 480;
+parameter v_frontporch = 10;
+parameter v_syncwidth = 2;
+parameter v_backporch = 33;
+parameter v_total = 525;
+
+// VGA brojaèi i signali
+reg [9:0] h_counter = 0;
+reg [9:0] v_counter = 0;
+reg hsync, vsync;
+
+// Grid parametri
+localparam CELL_WIDTH = 16;
+localparam CELL_HEIGHT = 16;
+localparam GRID_COLS = 8;
+localparam GRID_ROWS = 8;
+localparam GRID_WIDTH = GRID_COLS * CELL_WIDTH;
+localparam GRID_HEIGHT = GRID_ROWS * CELL_HEIGHT;
+localparam GRID_X_OFFSET = (640 - GRID_WIDTH) / 2;
+localparam GRID_Y_OFFSET = (480 - GRID_HEIGHT) / 2;
+
+// Signali za crtanje (mora biti reg jer se koriste u always bloku)
+reg grid;
+
+// Miš: signali
+wire [8:0] mouse_x, mouse_y;
+wire [2:0] mouse_btn;
+wire mouse_done_tick;
+
+// Instanciranje modula za miš
+mouse mouse_unit (
+    .clk(CLK),
+    .reset(RESET),
+    .ps2d(PS2_DATA),
+    .ps2c(PS2_CLK),
+    .xm(mouse_x),
+    .ym(mouse_y),
+    .btnm(mouse_btn),
+    .m_done_tick(mouse_done_tick)
+);
+
+// Registarske pozicije kursora
+reg [9:0] cursor_x = 320;
+reg [9:0] cursor_y = 240;
+
+// Podešavanje osjetljivosti
+wire signed [9:0] scaled_mouse_x = $signed(mouse_x) >>> 1;
+wire signed [9:0] scaled_mouse_y = $signed(mouse_y) >>> 1;
+
+// Ažuriranje pozicije kursora
+always @(posedge CLK or posedge RESET) begin
+    if (RESET) begin
+        cursor_x <= 320;
+        cursor_y <= 240;
+    end else if (mouse_done_tick) begin
+        if ($signed({1'b0, cursor_x}) + scaled_mouse_x > 639) cursor_x <= 639;
+        else if ($signed({1'b0, cursor_x}) + scaled_mouse_x < 0) cursor_x <= 0;
+        else cursor_x <= cursor_x + scaled_mouse_x;
+        
+        if ($signed({1'b0, cursor_y}) - scaled_mouse_y > 479) cursor_y <= 479;
+        else if ($signed({1'b0, cursor_y}) - scaled_mouse_y < 0) cursor_y <= 0;
+        else cursor_y <= cursor_y - scaled_mouse_y;
+    end
+end
+
+
+// ROM za strelicu
+reg [7:0] arrow_rom [0:7];
+initial begin
+    arrow_rom[0] = 8'b0000_0001;
+    arrow_rom[1] = 8'b0000_0011;
+    arrow_rom[2] = 8'b0000_0111;
+    arrow_rom[3] = 8'b0000_1111;
+    arrow_rom[4] = 8'b0000_0111;
+    arrow_rom[5] = 8'b0000_0011;
+    arrow_rom[6] = 8'b0000_0001; 
+    arrow_rom[7] = 8'b0000_0000; 
+end
+
+// Signali za crtanje
+wire [9:0] sprite_x = h_counter - cursor_x;
+wire [9:0] sprite_y = v_counter - cursor_y;
+wire sprite_area = (sprite_x < 8) && (sprite_y < 8) && (sprite_x >= 0) && (sprite_y >= 0);
+wire [2:0] sprite_x_rel = sprite_x[2:0];
+wire [2:0] sprite_y_rel = sprite_y[2:0];
+wire sprite_bit = arrow_rom[sprite_y_rel][sprite_x_rel];
+
+reg [3:0] susjedniBr;
+
+// Glavni crtaèki logika
+always @(posedge clk25 or posedge RESET) begin
+    if (RESET) begin
+        h_counter <= 0;
+        v_counter <= 0;
+        hsync <= 1;
+        vsync <= 1;
+        grid <= 0;
+    end else if (SW0) begin
+        h_counter <= (h_counter == h_total - 1) ? 0 : h_counter + 1;
+        h_counter <= (h_counter == h_total - 1) ? 0 : h_counter + 1;
+        if (h_counter == h_total - 1)
+            v_counter <= (v_counter == v_total - 1) ? 0 : v_counter + 1;
+
+        // Sync signali
+        hsync <= ~((h_counter >= h_display + h_frontporch) && 
+                  (h_counter < h_display + h_frontporch + h_syncwidth));
+        vsync <= ~((v_counter >= v_display + v_frontporch) && 
+                  (v_counter < v_display + v_frontporch + v_syncwidth));
+
+        // Grid logika
+                    
+        grid <= (h_counter >= GRID_X_OFFSET && h_counter <= GRID_X_OFFSET + GRID_WIDTH + 1 &&
+                 v_counter >= GRID_Y_OFFSET && v_counter <= GRID_Y_OFFSET + GRID_HEIGHT + 1) &&
+                (((h_counter - GRID_X_OFFSET) % CELL_WIDTH < 2) ||
+                 ((v_counter - GRID_Y_OFFSET) % CELL_HEIGHT < 2));
+    end
+	 else if((game_win || game_over) && mouse_btn[2]) begin
+		  h_counter <= 0;
+        v_counter <= 0;
+        hsync <= 1;
+        vsync <= 1;
+        grid <= 0;
+	 end
+end
+
+wire cursor_in_grid = (cursor_x >= GRID_X_OFFSET) && (cursor_x < GRID_X_OFFSET + GRID_WIDTH) &&
+                      (cursor_y >= GRID_Y_OFFSET) && (cursor_y < GRID_Y_OFFSET + GRID_HEIGHT);
+
+// Sigurno izraèunavanje pozicije samo ako je kursor u gridu
+wire [3:0] grid_col = cursor_in_grid ? ((cursor_x - GRID_X_OFFSET) / CELL_WIDTH) : 4'hF;
+wire [3:0] grid_row = cursor_in_grid ? ((cursor_y - GRID_Y_OFFSET) / CELL_HEIGHT) : 4'hF;
+
+////////////////////////////////////////
+reg [6:0] seed_counter = 0;
+
+always @(posedge CLK) begin
+        seed_counter <= seed_counter + 1;
+end
+
+///////////////////////////////////////////
+
+reg [3:0] polje [0:63];
+
+reg [6:0] init_counter = 0;
+//reg [3:0] countp = 0;  // 2-bitni brojaè za 0-1-2 ciklus
+//reg switch = 0;
+
+wire in_grid_area = (h_counter >= GRID_X_OFFSET) && (h_counter <= GRID_X_OFFSET + GRID_WIDTH +2) && (v_counter >= GRID_Y_OFFSET) && (v_counter <= GRID_Y_OFFSET + GRID_HEIGHT + 1);
+wire game_win2, game_over2;
+assign game_win2 = game_win;
+assign game_over2 = game_over;
+wire [6:0] first_click_index;
+wire first_click_done;
+wire [6:0] clicked_cell;
+wire [63:0] grid_state; // 100-bitni vektor za stanje polja
+wire [63:0] grid_state2;
+grid_click click_unit (
+    .clk(CLK),
+    .reset(RESET),
+    .grid_col(grid_col),
+    .grid_row(grid_row),
+    .mouse_click(mouse_btn[0]),
+	 .game_win(game_win2),
+	 .game_over(game_over2),
+   // .led_state(led_state),
+    .grid_state(grid_state),
+	 .first_click_index(first_click_index),
+	 .first_click_done(first_click_done)
+);
+
+grid_click_right click_unit_right (
+    .clk(CLK),
+    .reset(RESET),
+    .grid_col(grid_col),
+    .grid_row(grid_row),
+    .mouse_click(mouse_btn[1]),
+    .grid_state(grid_state2)
+);
+
+localparam CELL_CLOSED = 2'b00;
+localparam CELL_OPENED = 2'b01;
+localparam CELL_FLAGGED = 2'b10;
+reg [1:0] cell_state [0:63];  // Stanje za svaku æeliju
+
+// Logika igre
+      // Sadržaj æelije (0-8: broj mina, 9: mina)
+
+
+reg [6:0] opened_count = 0;   // Broj otvorenih æelija bez mina
+integer k;
+// FSM za upravljanje stanjima æelija
+// 1. Sinkronizacija ulaza za cursor poziciju
+reg [3:0] grid_col_sync, grid_row_sync;
+always @(posedge CLK) begin
+    grid_col_sync <= grid_col;
+    grid_row_sync <= grid_row;
+end
+
+// 2. Kombinacijski indeks (sinkronizirano)
+wire [6:0] current_idx = grid_row_sync * 8 + grid_col_sync;
+
+// 3. Registar za praæenje otvorenih æelija
+
+
+// 4. FSM za stanja æelija
+reg [1:0] zero_opening [0:63]; // 0 = neaktivno, 1 = èekanje, 2 = otvorena nula, 3 = otvoren broj
+reg processing_zero;
+reg [6:0] d;
+reg [6:0] h;
+reg found_one;
+reg [6:0] polje_index;
+reg[63:0] opened_history;
+reg [63:0] check = 0;
+integer o;
+reg[4:0] flag_count; 
+
+
+////////////////////////////////////////////
+
+
+
+always @(posedge CLK) begin //1
+    if (RESET || ((game_win || game_over) && mouse_btn[2])) begin //2
+        // Reset kontrolnih signala
+        game_over       <= 0;
+        game_win        <= 0;
+        opened_count    <= 0;
+        processing_zero <= 0;
+		  flag_count <= 0;
+        d               = 0;
+		  // Reset stanja svih æelija
+        for (h = 0; h < 64; h = h + 1) begin //3
+            cell_state[h]      <= CELL_CLOSED;
+            zero_opening[h]    <= 0;
+            opened_history[h]  <= 0;
+        end //3
+    end //2
+    else if (!game_over && !game_win && !processing_zero) begin //2
+        // Detekcija dogaðaja miša
+        if (mouse_done_tick && cursor_in_grid) begin //3
+            // DESNI KLIK - flag logika
+            if (mouse_btn[1] && !mouse_btn[0]) begin //4
+                if (cell_state[current_idx] == CELL_CLOSED) begin //5
+                    cell_state[current_idx] <= CELL_FLAGGED;
+						  flag_count <= flag_count + 1;
+                end //5
+                else if (cell_state[current_idx] == CELL_FLAGGED) begin //5
+                    cell_state[current_idx] <= CELL_CLOSED;
+						  flag_count <= flag_count - 1;
+                end //5
+            end //4
+            // LIJEVI KLIK - otvaranje æelije
+            else if (mouse_btn[0] && !mouse_btn[1]) begin //4
+                if (cell_state[current_idx] == CELL_CLOSED) begin //5
+                    // Oznaci æeliju kao otvorenu
+                    cell_state[current_idx] <= CELL_OPENED;
+                    // Provjera je li mina
+                    if (polje[current_idx] == 9) begin //6
+                        game_over <= 1; // GAME OVER
+                    end //6
+                    // Brojanje samo ako nije mina i nije veæ brojana
+                    else if (!opened_history[current_idx]) begin //6
+                        opened_history[current_idx] <= 1'b1; // Oznaèi kao brojanu
+                        opened_count <= opened_count + 1;    // Poveæaj brojaè
+                        // Provjera pobjede (90 otvorenih æelija)
+                        if (opened_count == 53) begin //7
+                            game_win <= 1; // POBJEDA
+                        end //7
+                    end //6
+                    // Pokreni flood fill ako je nula
+                    if (polje[current_idx] == 0 && first_click_done) begin //6
+                        zero_opening[current_idx] <= 1;
+                        processing_zero <= 1;
+                        d = 0;
+                    end //6
+                end //5
+            end //4
+        end //3
+    end //2
+	 
+    // Flood fill logika
+    else if (processing_zero) begin //2
+        if (d < 64) begin //3
+            if (zero_opening[d] == 1) begin //4
+                if (polje[d] == 0) begin //5
+                    zero_opening[d] <= 2;
+                    cell_state[d]   <= CELL_OPENED;
+                    if (!opened_history[d]) begin //6
+                        opened_history[d] <= 1;
+                        opened_count <= opened_count + 1;
+                        if (opened_count == 53)
+                            game_win <= 1;
+                    end //6
+                    // Gore-lijevo
+                    if (d > 7 && d[2:0] != 0) begin
+                        if (zero_opening[d-9] == 0)
+                            zero_opening[d - 9] <= 1;
+                    end
+                    // Gore
+                    if (d >= 8 ) begin
+                        if (zero_opening[d - 8] == 0)
+                            zero_opening[d - 8] <= 1;
+                    end
+                    // Gore-desno
+                    if (d > 7 && d[2:0] != 7 ) begin
+                        if (zero_opening[d - 7] == 0)
+                            zero_opening[d - 7] <= 1;
+                    end
+                    // Lijevo
+                    if (d[2:0] != 0) begin
+                        if (zero_opening[d - 1] == 0)
+                            zero_opening[d - 1] <= 1;
+                    end
+                    // Desno
+                    if (d[2:0] != 7)
+                        zero_opening[d + 1] <= 1;
+                    // Dolje-lijevo
+                    if (d < 56 && d[2:0] != 0 )
+                        zero_opening[d + 7] <= 1;
+                    // Dolje
+                    if (d < 56)
+                        zero_opening[d + 8] <= 1;
+                    // Dolje-desno
+                    if (d < 55 && d[2:0] != 7)
+                        zero_opening[d + 9] <= 1;
+								
+                    d = -1;
+                end //5
+                else if (polje[d] != 9) begin //5
+                    zero_opening[d] <= 3;
+                    cell_state[d]   <= CELL_OPENED;
+                    if (!opened_history[d]) begin //6
+                        opened_history[d] <= 1;
+                        opened_count <= opened_count + 1;
+                        if (opened_count == 53)
+                            game_win <= 1;
+                    end //6
+                end //5
+            end //4
+            d = d + 1;
+        end //3
+        else begin //3
+            processing_zero <= 0;
+            d = 0;
+        end //3
+    end //2	
+	 
+    else if (game_over) begin //2
+        for (o = 0; o < 64; o = o + 1) begin //3
+            if (polje[o] == 9)
+                cell_state[o] <= CELL_OPENED;
+        end //3
+    end //2
+end //1
+
+
+// Odreðivanje trenutne æelije
+wire [3:0] current_col = ((h_counter - GRID_X_OFFSET - 2) / CELL_WIDTH);
+wire [3:0] current_row = ((v_counter - GRID_Y_OFFSET - 1) / CELL_HEIGHT);
+
+parameter PLACE_MINES = 2'd0;
+parameter COUNT_MINES = 2'd1;
+parameter DONE        = 2'd2;
+reg [1:0] state;
+
+reg [63:0] mines;
+reg [6:0] lfsr;
+reg [3:0] mine_counter;
+
+// Counters for grid traversal
+
+
+reg [3:0] mine_count;
+
+
+reg [3:0] row, col;
+wire left_edge, right_edge, top_edge, bottom_edge;
+assign left_edge   = (col == 0);
+assign right_edge  = (col == 7);
+assign top_edge    = (row == 0);
+assign bottom_edge = (row == 7);
+reg grid_done = 0;
+
+integer i;
+always @(posedge CLK) begin
+    if (RESET || ((game_win || game_over) && mouse_btn[2])) begin
+        state <= PLACE_MINES;
+        mines <= 0;
+        lfsr <= 7'b1010101;
+        mine_counter <= 0;
+        polje_index <= 0;
+        row <= 0;
+        col <= 0;
+        grid_done <= 0;
+        for (i = 0; i < 64; i = i+1)
+            polje[i] <= 0;
+    end 
+	 else begin
+        case (state)
+            //  PLACE MINES 
+            PLACE_MINES: begin
+                if (first_click_done && mine_counter < 10) begin
+                    // LFSR for pseudo-random position
+                    lfsr <= {lfsr[5:0], lfsr[6] ^ lfsr[5]} ^ seed_counter;
+                    if (lfsr < 64 && lfsr != first_click_index && !mines[lfsr]) begin
+                        mines[lfsr] <= 1'b1;
+                        mine_counter <= mine_counter + 1;
+                        polje[lfsr] <= 9; // 9 means mine
+                    end
+                end
+                if (mine_counter == 10) begin
+                    // Start counting mines
+                    state <= COUNT_MINES;
+                    polje_index <= 0;
+                    row <= 0;
+                    col <= 0;
+                end
+            end
+
+            //  COUNT MINES 
+            COUNT_MINES: begin
+                // Only count if this cell is not a mine
+                if (polje[polje_index] != 9) begin
+                    mine_count = 0;
+                    // Check all 8 neighbors
+                    // North-West
+                    if (!top_edge && !left_edge)
+                        if (polje[polje_index-9] == 9) mine_count = mine_count + 1;
+                    // North
+                    if (!top_edge)
+                        if (polje[polje_index-8] == 9) mine_count = mine_count + 1;
+                    // North-East
+                    if (!top_edge && !right_edge)
+                        if (polje[polje_index-7] == 9) mine_count = mine_count + 1;
+                    // West
+                    if (!left_edge)
+                        if (polje[polje_index-1] == 9) mine_count = mine_count + 1;
+                    // East
+                    if (!right_edge)
+                        if (polje[polje_index+1] == 9) mine_count = mine_count + 1;
+                    // South-West
+                    if (!bottom_edge && !left_edge)
+                        if (polje[polje_index+7] == 9) mine_count = mine_count + 1;
+                    // South
+                    if (!bottom_edge)
+                        if (polje[polje_index+8] == 9) mine_count = mine_count + 1;
+                    // South-East
+                    if (!bottom_edge && !right_edge)
+                        if (polje[polje_index+9] == 9) mine_count = mine_count + 1;
+
+                    polje[polje_index] <= mine_count;
+                end
+
+                // Move to next cell
+                if (col == 7) begin
+                    col <= 0;
+                    if (row == 7) begin
+                        // All cells processed
+                        state <= DONE;
+                        grid_done <= 1;
+                    end else begin
+                        row <= row + 1;
+                    end
+                end else begin
+                    col <= col + 1;
+                end
+                polje_index <= polje_index + 1;
+            end
+
+            // ========== DONE ==========
+            DONE: begin
+             
+            end
+        endcase
+    end
+end
+
+
+
+reg [7:0] jedan [0:7];
+initial begin
+	 jedan[0] = 8'b00110000;  
+    jedan[1] = 8'b00111000;  
+    jedan[2] = 8'b00110100;  
+    jedan[3] = 8'b00110000;  
+    jedan[4] = 8'b00110000;  
+    jedan[5] = 8'b00110000;  
+    jedan[6] = 8'b00110000;  
+    jedan[7] = 8'b01111000;  
+end
+
+reg [7:0] mine_rom [0:7];
+initial begin
+    mine_rom[0] = 8'b00100100;
+    mine_rom[1] = 8'b00011000;
+    mine_rom[2] = 8'b10111101;
+    mine_rom[3] = 8'b01111110;
+    mine_rom[4] = 8'b01111110;
+    mine_rom[5] = 8'b10111101;
+    mine_rom[6] = 8'b00011000;
+    mine_rom[7] = 8'b00100100;
+end
+
+reg [7:0] nula [0:7];
+initial begin
+    nula[0] = 8'b11111111;
+    nula[1] = 8'b11111111;
+    nula[2] = 8'b11111111;
+    nula[3] = 8'b11111111;
+    nula[4] = 8'b11111111;
+    nula[5] = 8'b11111111;
+    nula[6] = 8'b11111111;
+    nula[7] = 8'b11111111;
+end
+
+reg [7:0]dva[0:7];
+initial begin
+    dva[0] = 8'b01111110;  
+    dva[1] = 8'b11000011;  
+    dva[2] = 8'b11000000;  
+    dva[3] = 8'b01110000;  
+    dva[4] = 8'b00011100;  
+    dva[5] = 8'b00001110;  
+    dva[6] = 8'b00000011;  
+    dva[7] = 8'b11111111;  
+end
+
+reg [7:0] three[0:7];
+initial begin
+    three[0] = 8'b01111110;
+    three[1] = 8'b11000011;
+    three[2] = 8'b11100000;
+    three[3] = 8'b01111000;
+    three[4] = 8'b01111000;
+    three[5] = 8'b11100000;
+    three[6] = 8'b11000011;
+    three[7] = 8'b01111110;  
+end
+
+
+reg [7:0] four[0:7];
+initial begin
+    four[0] = 8'b00011000; 
+    four[1] = 8'b00011100;  
+    four[2] = 8'b00011010;  
+    four[3] = 8'b00111111; 
+    four[4] = 8'b00011000;  
+    four[5] = 8'b00011000;  
+    four[6] = 8'b00011000;  
+    four[7] = 8'b00011000;   
+end
+
+reg [7:0] five[0:7];
+initial begin
+    five[0] = 8'b01111111;
+    five[1] = 8'b00000011;  
+    five[2] = 8'b00000011; 
+    five[3] = 8'b00111111;
+    five[4] = 8'b01100000; 
+    five[5] = 8'b01100000;  
+    five[6] = 8'b01100011;  
+    five[7] = 8'b00111110;  
+end
+
+reg [7:0] six[0:7];
+initial begin
+    six[0] = 8'b01111100; 
+    six[1] = 8'b11000110;  
+    six[2] = 8'b00000011;  
+    six[3] = 8'b01111111; 
+    six[4] = 8'b11000011;
+    six[5] = 8'b11000011; 
+    six[6] = 8'b11000110; 
+    six[7] = 8'b01111100;
+end
+
+reg [7:0] seven[0:7];
+initial begin
+    seven[0] = 8'b11111111;
+    seven[1] = 8'b11000000;
+    seven[2] = 8'b01100000;
+    seven[3] = 8'b00110000; 
+    seven[4] = 8'b00011000;  
+    seven[5] = 8'b00001100; 
+    seven[6] = 8'b00000110;
+    seven[7] = 8'b00000011; 
+end
+
+reg [7:0] eight[0:7];
+initial begin
+    eight[0] = 8'b00111100; 
+    eight[1] = 8'b01100110; 
+    eight[2] = 8'b01100110;  
+    eight[3] = 8'b00111100; 
+    eight[4] = 8'b01100110; 
+    eight[5] = 8'b01100110;  
+    eight[6] = 8'b01100110;
+    eight[7] = 8'b00111100; 
+end
+
+reg [7:0] nine[0:7];
+initial begin
+    nine[0] = 8'b01111110;
+    nine[1] = 8'b11000011;
+    nine[2] = 8'b11000011;
+    nine[3] = 8'b11000011;
+    nine[4] = 8'b11111110;
+    nine[5] = 8'b11000000;
+    nine[6] = 8'b01100000;
+    nine[7] = 8'b00111110;
+end
+
+reg [7:0] flag[0:7];
+initial begin
+    flag[0] = 8'b00111000; 
+    flag[1] = 8'b01111000;  
+    flag[2] = 8'b11111000;  
+    flag[3] = 8'b00011000; 
+    flag[4] = 8'b00011000;  
+    flag[5] = 8'b00011000;  
+    flag[6] = 8'b00011000;  
+    flag[7] = 8'b01111110;   
+end
+
+reg [15:0] flag_16x16 [0:15];
+
+initial begin
+    // Originalni redovi (8x8) se dupliraju u 16x16
+    // Svaki piksel se pretvara u 2x2 blok
+    flag_16x16[0]  = 16'b0000_0011_1000_0000; // Original: 00111000
+    flag_16x16[1]  = 16'b0000_0111_1000_0000;
+    flag_16x16[2]  = 16'b0000_1111_1000_0000; 
+    flag_16x16[3]  = 16'b0001_1111_1000_0000;
+    flag_16x16[4]  = 16'b0011_1111_1000_0000;
+    flag_16x16[5]  = 16'b0111_1111_1000_0000;
+    flag_16x16[6]  = 16'b1111_1111_1000_0000;
+    flag_16x16[7]  = 16'b0000_0011_1000_0000;
+    flag_16x16[8]  = 16'b0000_0011_1000_0000;
+    flag_16x16[9]  = 16'b0000_0011_1000_0000;
+    flag_16x16[10] = 16'b0000_0011_1000_0000;
+    flag_16x16[11] = 16'b0000_0011_1000_0000;
+    flag_16x16[12] = 16'b0000_0011_1000_0000;
+    flag_16x16[13] = 16'b0000_0011_1000_0000;
+    flag_16x16[14] = 16'b0111_1111_1111_1110;
+    flag_16x16[15] = 16'b0111_1111_1111_1110;
+end
+
+
+reg [7:0] nula_num[0:7];
+initial begin
+    nula_num[0] = 8'b00111100; 
+    nula_num[1] = 8'b01100110; 
+    nula_num[2] = 8'b01100110;  
+    nula_num[3] = 8'b01100110; 
+    nula_num[4] = 8'b01100110; 
+    nula_num[5] = 8'b01100110;  
+    nula_num[6] = 8'b01100110;
+    nula_num[7] = 8'b00111100; 
+end
+
+reg [7:0] line[0:7];
+initial begin
+    line[0] = 8'b00000000; 
+    line[1] = 8'b00000000; 
+    line[2] = 8'b00000000;  
+    line[3] = 8'b11111111;  
+    line[4] = 8'b11111111;  
+    line[5] = 8'b00000000; 
+    line[6] = 8'b00000000;
+    line[7] = 8'b00000000; 
+end
+
+reg [15:0] smiley_rom [0:15];
+initial begin
+    // Bijeli smajli sa crnim pozadinom
+    smiley_rom[0]  = 16'b0000001111000000;  
+    smiley_rom[1]  = 16'b0000111111110000; 
+    smiley_rom[2]  = 16'b0011111111111100; 
+    smiley_rom[3]  = 16'b0011111111111100;  
+    smiley_rom[4]  = 16'b0110101111010110; 
+    smiley_rom[5]  = 16'b0111011111101110; 
+    smiley_rom[6]  = 16'b1110101111010111; 
+    smiley_rom[7]  = 16'b1111111111111111; 
+    smiley_rom[8]  = 16'b1111111111111111; 
+    smiley_rom[9]  = 16'b1111100000011111; 
+    smiley_rom[10] = 16'b0111011111101110;
+    smiley_rom[11] = 16'b0110111111110110; 
+    smiley_rom[12] = 16'b0011111111111100; 
+    smiley_rom[13] = 16'b0011111111111100; 
+    smiley_rom[14] = 16'b0000111111110000;  
+    smiley_rom[15] = 16'b0000001111000000;   
+end
+
+reg [15:0] smiley_rom2 [0:15];
+initial begin
+    // Bijeli smajli sa crnim pozadinom
+    smiley_rom2[0]  = 16'b0000001111000000;  
+    smiley_rom2[1]  = 16'b0000111111110000; 
+    smiley_rom2[2]  = 16'b0011111111111100; 
+    smiley_rom2[3]  = 16'b0011111111111100;  
+    smiley_rom2[4]  = 16'b0111001111001110; 
+    smiley_rom2[5]  = 16'b0111001111001110; 
+    smiley_rom2[6]  = 16'b1111111111111111; 
+    smiley_rom2[7]  = 16'b1111111111111111; 
+    smiley_rom2[8]  = 16'b1101111111111011; 
+    smiley_rom2[9]  = 16'b1110111111110111; 
+    smiley_rom2[10] = 16'b0111011111101110;
+    smiley_rom2[11] = 16'b0111100000011110; 
+    smiley_rom2[12] = 16'b0011111111111100; 
+    smiley_rom2[13] = 16'b0011111111111100; 
+    smiley_rom2[14] = 16'b0000111111110000;  
+    smiley_rom2[15] = 16'b0000001111000000;   
+end
+
+parameter SMILEY_CENTER_X = 322;
+parameter SMILEY_CENTER_Y = 160;
+parameter SMILEY_SIZE = 16;  // 16x16 piksela
+
+parameter FlagNum_X = 299;
+parameter FlagNum_Y = 160;
+parameter FlagNum_SIZE = 16;
+
+wire [9:0] Flag_x = FlagNum_X - (FlagNum_SIZE / 2);
+wire [9:0] Flag_y = FlagNum_Y - (FlagNum_SIZE / 2);
+
+wire FlagNum_area = (h_counter >= Flag_x) && 
+                   (h_counter < Flag_x + FlagNum_SIZE) &&
+                   (v_counter >= Flag_y) && 
+                   (v_counter < Flag_y + FlagNum_SIZE);
+						 
+wire [3:0] FlagNum_rel_x = h_counter - Flag_x;
+wire [3:0] FlagNum_rel_y = v_counter - Flag_y;
+
+
+wire FlagNum_pixel = flag_16x16[FlagNum_rel_y][15 - FlagNum_rel_x];
+
+
+wire show_FlagNum = FlagNum_area && FlagNum_pixel;
+						 
+// Izraèunaj gornju lijevu poziciju (centriranje)
+wire [9:0] smiley_x = SMILEY_CENTER_X - (SMILEY_SIZE / 2);  // 320 - 8 = 312
+wire [9:0] smiley_y = SMILEY_CENTER_Y - (SMILEY_SIZE / 2);  // 70 - 8 = 62
+
+// 3. PROVJERA DA LI JE PIKSEL UNUTAR SPRITEA
+wire smiley_area = (h_counter >= smiley_x) && 
+                   (h_counter < smiley_x + SMILEY_SIZE) &&
+                   (v_counter >= smiley_y) && 
+                   (v_counter < smiley_y + SMILEY_SIZE);
+
+// 4. IZRAÈUNAJ RELATIVNE KOORDINATE UNUTAR SPRITEA
+wire [3:0] smiley_rel_x = h_counter - smiley_x;  // 0-15
+wire [3:0] smiley_rel_y = v_counter - smiley_y;  // 0-15
+
+// 5. PROÈITAJ PIKSEL IZ ROM-A (obrnuti redosljed zbog MSB)
+wire smiley_pixel = smiley_rom[smiley_rel_y][15 - smiley_rel_x];
+wire smiley2_pixel = smiley_rom2[smiley_rel_y][15 - smiley_rel_x];
+// 6. PRIKAZUJ SPRITE SAMO KADA JE IZABRAN (npr. game_over)
+wire smiley_active = game_over; // Ili bilo koji drugi uslov
+wire smiley2_active = game_win;
+
+// 7. KOMBINOVANI SIGNAL ZA PRIKAZ
+wire show_smiley = smiley_area && smiley_active && smiley_pixel;
+wire show_smiley2 = smiley_area && smiley2_active && smiley2_pixel;
+
+//////////////////////////////////
+wire [3:0] cell_pixel_x = (h_counter - GRID_X_OFFSET -2) % CELL_WIDTH;
+wire [3:0] cell_pixel_y = (v_counter - GRID_Y_OFFSET -1) % CELL_HEIGHT;
+
+// Koordinate za 8x8 sprite centriran u 16x16 æeliji
+wire [2:0] cell_sprite_x;
+wire [2:0] cell_sprite_y;
+
+assign cell_sprite_x = (cell_pixel_x >= 4 && cell_pixel_x < 12) ? (cell_pixel_x - 4) : 3'b0;
+assign cell_sprite_y = (cell_pixel_y >= 4 && cell_pixel_y < 12) ? (cell_pixel_y - 4) : 3'b0;
+
+// Da li smo unutar centra æelije (gdje crtamo sprite)
+wire cell_sprite_area = (cell_pixel_x >= 4) && (cell_pixel_x < 12) &&
+                        (cell_pixel_y >= 4) && (cell_pixel_y < 12);
+								
+
+// Kombinirana logika za odabir sprite-a
+wire [6:0] current_index = current_row * 8 + current_col;
+wire [1:0] current_cell_state = cell_state[current_index];
+
+								
+wire cell_jedan = in_grid_area && (current_col < 8) && (current_row < 8) &&
+						(polje[current_index] ==1) &&
+                  (cell_state[current_index] == CELL_OPENED) &&
+                  cell_sprite_area &&
+                  jedan[cell_sprite_y][cell_sprite_x];
+
+wire cell_null = in_grid_area && (current_col < 8) && (current_row < 8) &&
+						(polje[current_index] == 0) &&
+                  (cell_state[current_index] == CELL_OPENED) &&
+                  cell_sprite_area &&
+                  nula[cell_sprite_y][cell_sprite_x];
+						
+wire cell_mina = in_grid_area && (current_col < 8) && (current_row < 8) &&
+						(polje[current_index] ==9) &&
+                  (cell_state[current_index] == CELL_OPENED) &&
+                  cell_sprite_area &&
+                  mine_rom[cell_sprite_y][cell_sprite_x];
+						
+wire cell_dva = in_grid_area && (current_col < 8) && (current_row < 8) &&
+						(polje[current_index] ==2) &&
+                  (cell_state[current_index] == CELL_OPENED) &&
+                  cell_sprite_area &&
+                  dva[cell_sprite_y][cell_sprite_x];
+
+wire cell_tri = in_grid_area && (current_col < 8) && (current_row < 8) &&
+						(polje[current_index] ==3) &&
+                  (cell_state[current_index] == CELL_OPENED) &&
+                  cell_sprite_area &&
+                  three[cell_sprite_y][cell_sprite_x];
+						
+wire cell_four = in_grid_area && (current_col < 8) && (current_row < 8) &&
+						(polje[current_index] == 4) &&
+                  (cell_state[current_index] == CELL_OPENED) &&
+                  cell_sprite_area &&
+                  four[cell_sprite_y][cell_sprite_x];
+						
+wire cell_five = in_grid_area && (current_col < 8) && (current_row < 8) &&
+						(polje[current_index] ==5) &&
+                  (cell_state[current_index] == CELL_OPENED) &&
+                  cell_sprite_area &&
+                  five[cell_sprite_y][cell_sprite_x];
+						
+wire cell_six = in_grid_area && (current_col < 8) && (current_row < 8) &&
+						(polje[current_index] ==6) &&
+                  (cell_state[current_index] == CELL_OPENED) &&
+                  cell_sprite_area &&
+                  six[cell_sprite_y][cell_sprite_x];
+
+wire cell_seven = in_grid_area && (current_col < 8) && (current_row < 8) &&
+						(polje[current_index] == 7) &&
+                  (cell_state[current_index] == CELL_OPENED) &&
+                  cell_sprite_area &&
+                  seven[cell_sprite_y][cell_sprite_x];
+
+wire cell_eight = in_grid_area && (current_col < 8) && (current_row < 8) &&
+						(polje[current_index] == 8) &&
+                  (cell_state[current_index] == CELL_OPENED) &&
+                  cell_sprite_area &&
+                  eight[cell_sprite_y][cell_sprite_x];	
+
+wire cell_flag = in_grid_area && (current_col < 8) && (current_row < 8) &&
+                  grid_state2[current_index] &&
+						(cell_state[current_index] == CELL_FLAGGED) &&
+                  cell_sprite_area &&
+                  flag[cell_sprite_y][cell_sprite_x];		
+
+wire cell_unopened =	in_grid_area && (current_col < 8) && (current_row < 8) &&
+                  (cell_state[current_index] == CELL_CLOSED) &&
+                  cell_sprite_area &&
+                  nula[cell_sprite_y][cell_sprite_x];		
+
+									
+
+
+//////////////////////////////////
+
+//wire cell_red = (current_col < 10) && (current_row < 10) && grid_state[current_row*10 + current_col];
+
+assign VGA_HSYNC = hsync;
+assign VGA_VSYNC = vsync;
+// Glavna logika za VGA izlaze
+////////////////////////////////////////////////////////////////9999999999999999999999999999999999999999999999
+
+parameter FLAG_TIMER_X = 265;       
+parameter FLAG_TIMER_Y = 153;       
+parameter DIGIT_WIDTH = 8;  
+
+wire [3:0]  tens, units;
+wire tens_pixel, units_pixel;
+
+wire timer_pixel;
+assign timer_pixel = tens_pixel | units_pixel;
+
+wire [4:0] timer_value = 10 - flag_count;
+wire is_negative = (flag_count > 10);
+
+wire [3:0] tens_digit = 
+    is_negative ? 4'd10 : 
+    (timer_value == 5'd10) ? 4'd1 : 4'd0;
+    
+wire [3:0] units_digit = 
+    is_negative ? 4'd10 : 
+    (timer_value == 5'd10) ? 4'd0 : 
+    timer_value[3:0];
+	 
+	 
+Flags tens_digit_inst(
+    .h_pos(h_counter - FLAG_TIMER_X),
+    .v_pos(v_counter - FLAG_TIMER_Y),
+    .digit(tens_digit),
+    .pixel(tens_pixel)
+);
+
+// 4. Instanciraj modul za jedinice
+Flags units_digit_inst(
+    .h_pos(h_counter - (FLAG_TIMER_X + DIGIT_WIDTH)),
+    .v_pos(v_counter - FLAG_TIMER_Y),
+    .digit(units_digit),
+    .pixel(units_pixel)
+);
+
+
+
+wire tens_area = 
+    (h_counter >= FLAG_TIMER_X) && 
+    (h_counter < FLAG_TIMER_X + DIGIT_WIDTH) && 
+    (v_counter >= FLAG_TIMER_Y) && 
+    (v_counter < FLAG_TIMER_Y + 16);  // Promijenjeno u 16 (visina fonta)
+
+wire units_area = 
+    (h_counter >= FLAG_TIMER_X + DIGIT_WIDTH) && 
+    (h_counter < FLAG_TIMER_X + 2*DIGIT_WIDTH) && 
+    (v_counter >= FLAG_TIMER_Y) && 
+    (v_counter < FLAG_TIMER_Y + 16);  // Promijenjeno u 16 (visina fonta)
+
+// 6. Kombiniraj signale sa podruèjima
+wire show_tens = tens_area && tens_pixel;
+wire show_units = units_area && units_pixel;
+wire show_timer = show_tens || show_units;
+
+assign led_state = (flag_count >= 0) ? 10-flag_count : 255;
+
+//wire rect_area = (h_counter >= 0) && (h_counter < 640) && (v_counter >= 0) && (v_counter < 480);  /////CIJELA BIJELA POZADINA
+wire rect_area = (h_counter >= GRID_X_OFFSET + 2) && (h_counter < GRID_X_OFFSET + GRID_WIDTH + 2) && (v_counter >= GRID_Y_OFFSET) && (v_counter < GRID_Y_OFFSET + GRID_HEIGHT); ////SAMO POZADINA GRIDA BIJELA
+
+wire rect_area_outline = (h_counter >= GRID_X_OFFSET - 12) && (h_counter < GRID_X_OFFSET + GRID_WIDTH + 16) && (v_counter >= GRID_Y_OFFSET-30) && (v_counter < GRID_Y_OFFSET + GRID_HEIGHT+14);
+////////////////////////////////////////////////////////////////9999999999999999999999999999999999999999999999
+// 5. Korektni VGA izlazi
+
+assign VGA_R = (sprite_area && sprite_bit) ? 1'b1 :
+					(show_smiley) ? 1'b1 :
+					(show_smiley2) ? 1'b1 :
+					(show_FlagNum) ? 1'b1 :
+					(show_timer) ? 1'b1 :					
+               (cell_mina && in_grid_area) ? 1'b1 :
+					(cell_flag && in_grid_area) ? 1'b1 :
+					(cell_eight && in_grid_area) ? 1'b1 :
+					(cell_seven && in_grid_area) ? 1'b1 :
+					(cell_six && in_grid_area) ? 1'b1 :
+					(cell_five && in_grid_area) ? 1'b1 :
+					(cell_four && in_grid_area) ? 1'b1 :					
+					(cell_tri && in_grid_area) ? 1'b1 :
+					(cell_dva && in_grid_area) ? 1'b0 :					
+               (cell_jedan && in_grid_area) ? 1'b0 :    
+               (cell_null && in_grid_area) ? 1'b1 :
+					(cell_unopened && in_grid_area) ? 1'b0:
+               (grid && in_grid_area) ? 1'b0 :
+					(rect_area) ? 1'b1 :
+					(rect_area_outline) ? 1'b0 : 1'b0;
+
+
+assign VGA_G = (sprite_area && sprite_bit) ? 1'b0 :
+					(show_smiley) ? 1'b1 :
+					(show_smiley2) ? 1'b1 :
+					(show_FlagNum) ? 1'b0 :
+					(show_timer) ? 1'b0 :
+               (cell_mina && in_grid_area) ? 1'b0 :
+					(cell_flag && in_grid_area) ? 1'b0 :
+					(cell_eight && in_grid_area) ? 1'b0 :
+					(cell_seven && in_grid_area) ? 1'b0 :
+					(cell_six && in_grid_area) ? 1'b0 :
+					(cell_five && in_grid_area) ? 1'b0 :
+					(cell_four && in_grid_area) ? 1'b0 :
+					(cell_tri && in_grid_area) ? 1'b0:
+					(cell_dva && in_grid_area) ? 1'b1 :			
+               (cell_jedan && in_grid_area) ? 1'b0 :         
+               (cell_null && in_grid_area) ? 1'b1 :
+					(cell_unopened && in_grid_area) ? 1'b0:					
+               (grid && in_grid_area) ? 1'b0 :
+					(rect_area) ? 1'b1 :
+					(rect_area_outline) ? 1'b0 : 1'b0;
+
+assign VGA_B = (sprite_area && sprite_bit) ? 1'b0 :
+					(show_smiley) ? 1'b0 :
+					(show_smiley2) ? 1'b0 :
+					(show_FlagNum) ? 1'b0 :
+					(show_timer) ? 1'b0 :
+               (cell_mina && in_grid_area) ? 1'b0 :
+					(cell_flag && in_grid_area) ? 1'b0 :
+					(cell_eight && in_grid_area) ? 1'b1 :
+					(cell_seven && in_grid_area) ? 1'b1 :
+					(cell_six && in_grid_area) ? 1'b1 :
+					(cell_five && in_grid_area) ? 1'b1 :
+					(cell_four && in_grid_area) ? 1'b1 :
+					(cell_tri && in_grid_area) ? 1'b0 :
+					(cell_dva && in_grid_area) ? 1'b0 :				
+               (cell_jedan && in_grid_area) ? 1'b1 :  
+               (cell_null && in_grid_area) ? 1'b1 : 
+					(cell_unopened && in_grid_area) ? 1'b0:					
+               (grid && in_grid_area) ? 1'b0 :
+					(rect_area) ? 1'b1 :
+					(rect_area_outline) ? 1'b1 : 1'b0;
+
+
+endmodule

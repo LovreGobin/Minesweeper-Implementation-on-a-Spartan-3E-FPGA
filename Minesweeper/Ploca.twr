@@ -1,0 +1,820 @@
+--------------------------------------------------------------------------------
+Release 14.7 Trace  (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\trce.exe -intstyle ise -v 3 -s 5
+-n 3 -fastpaths -xml Ploca.twx Ploca.ncd -o Ploca.twr Ploca.pcf -ucf Ploca.ucf
+
+Design file:              Ploca.ncd
+Physical constraint file: Ploca.pcf
+Device,package,speed:     xc3s500e,fg320,-5 (PRODUCTION 1.27 2013-10-13)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:3412 - To improve timing, see the Timing Closure User Guide (UG612).
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+INFO:Timing:3390 - This architecture does not support a default System Jitter 
+   value, please add SYSTEM_JITTER constraint to the UCF to modify the Clock 
+   Uncertainty calculation.
+INFO:Timing:3389 - This architecture does not support 'Discrete Jitter' and 
+   'Phase Error' calculations, these terms will be zero in the Clock 
+   Uncertainty calculation.  Please make appropriate modification to 
+   SYSTEM_JITTER to account for the unsupported Discrete Jitter and Phase 
+   Error.
+
+================================================================================
+Timing constraint: NET "CLK_BUFGP/IBUFG" PERIOD = 20 ns HIGH 40%;
+For more information, see Period Analysis in the Timing Closure User Guide (UG612).
+
+ 42815745 paths analyzed, 3851 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
+ Minimum period is  19.928ns.
+--------------------------------------------------------------------------------
+
+Paths for end point polje_3_3 (SLICE_X44Y60.F4), 244202 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     0.072ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               polje_index_1 (FF)
+  Destination:          polje_3_3 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      19.920ns (Levels of Logic = 15)
+  Clock Path Skew:      -0.008ns (0.058 - 0.066)
+  Source Clock:         CLK_BUFGP rising at 0.000ns
+  Destination Clock:    CLK_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: polje_index_1 to polje_3_3
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X47Y77.XQ      Tcko                  0.514   polje_index<1>
+                                                       polje_index_1
+    SLICE_X49Y81.G2      net (fanout=409)      1.117   polje_index<1>
+    SLICE_X49Y81.Y       Tilo                  0.612   COND_35_cmp_eq0043
+                                                       SF4811
+    SLICE_X54Y72.G1      net (fanout=29)       1.023   N1875
+    SLICE_X54Y72.Y       Tilo                  0.660   old_mine_count_39_cmp_eq0000161
+                                                       COND_35_cmp_eq00111
+    SLICE_X46Y60.F3      net (fanout=18)       1.233   COND_35_cmp_eq0011
+    SLICE_X46Y60.X       Tilo                  0.660   _old_mine_count_33<0>13193
+                                                       _old_mine_count_33<0>13193
+    SLICE_X52Y61.G1      net (fanout=1)        1.347   _old_mine_count_33<0>13193
+    SLICE_X52Y61.Y       Tilo                  0.660   _old_mine_count_33<0>13249
+                                                       _old_mine_count_33<0>13208
+    SLICE_X52Y61.F3      net (fanout=1)        0.020   _old_mine_count_33<0>13208/O
+    SLICE_X52Y61.X       Tilo                  0.660   _old_mine_count_33<0>13249
+                                                       _old_mine_count_33<0>13249
+    SLICE_X50Y60.F1      net (fanout=1)        0.387   _old_mine_count_33<0>13249
+    SLICE_X50Y60.X       Tilo                  0.660   mines<37>
+                                                       _old_mine_count_33<0>13393
+    SLICE_X40Y72.G2      net (fanout=1)        1.447   _old_mine_count_33<0>13393
+    SLICE_X40Y72.Y       Tilo                  0.660   N5171
+                                                       _old_mine_count_33<0>13404
+    SLICE_X40Y72.F4      net (fanout=1)        0.020   _old_mine_count_33<0>13404/O
+    SLICE_X40Y72.X       Tilo                  0.660   N5171
+                                                       _old_mine_count_33<0>13685
+    SLICE_X36Y72.F1      net (fanout=5)        0.438   N5171
+    SLICE_X36Y72.X       Tilo                  0.660   Madd_old_mine_count_42_addsub0000_lut<1>
+                                                       _old_mine_count_39<1>1
+    SLICE_X34Y72.G3      net (fanout=3)        0.313   Madd_old_mine_count_42_addsub0000_lut<1>
+    SLICE_X34Y72.Y       Tilo                  0.660   Madd_old_mine_count_48_addsub0000_cy<1>
+                                                       _old_mine_count_42<1>1
+    SLICE_X34Y72.F4      net (fanout=3)        0.058   Madd_old_mine_count_45_addsub0000_lut<1>
+    SLICE_X34Y72.X       Tilo                  0.660   Madd_old_mine_count_48_addsub0000_cy<1>
+                                                       Madd_old_mine_count_48_addsub0000_cy<1>11
+    SLICE_X36Y71.G3      net (fanout=3)        0.325   Madd_old_mine_count_48_addsub0000_cy<1>
+    SLICE_X36Y71.Y       Tilo                  0.660   Madd_old_mine_count_49_addsub0000_lut<1>
+                                                       polje_0_mux0000<0>3_SW0_SW0
+    SLICE_X40Y69.G1      net (fanout=1)        0.569   N2567
+    SLICE_X40Y69.Y       Tilo                  0.660   N801
+                                                       polje_0_mux0000<0>3
+    SLICE_X44Y60.G3      net (fanout=98)       1.121   N2147
+    SLICE_X44Y60.Y       Tilo                  0.660   polje_3_3
+                                                       polje_3_mux0000<0>_SW0
+    SLICE_X44Y60.F4      net (fanout=1)        0.020   polje_3_mux0000<0>_SW0/O
+    SLICE_X44Y60.CLK     Tfck                  0.776   polje_3_3
+                                                       polje_3_mux0000<0>
+                                                       polje_3_3
+    -------------------------------------------------  ---------------------------
+    Total                                     19.920ns (10.482ns logic, 9.438ns route)
+                                                       (52.6% logic, 47.4% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     0.117ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               polje_index_1 (FF)
+  Destination:          polje_3_3 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      19.875ns (Levels of Logic = 15)
+  Clock Path Skew:      -0.008ns (0.058 - 0.066)
+  Source Clock:         CLK_BUFGP rising at 0.000ns
+  Destination Clock:    CLK_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: polje_index_1 to polje_3_3
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X47Y77.XQ      Tcko                  0.514   polje_index<1>
+                                                       polje_index_1
+    SLICE_X49Y81.G2      net (fanout=409)      1.117   polje_index<1>
+    SLICE_X49Y81.Y       Tilo                  0.612   COND_35_cmp_eq0043
+                                                       SF4811
+    SLICE_X54Y72.G1      net (fanout=29)       1.023   N1875
+    SLICE_X54Y72.Y       Tilo                  0.660   old_mine_count_39_cmp_eq0000161
+                                                       COND_35_cmp_eq00111
+    SLICE_X46Y60.F3      net (fanout=18)       1.233   COND_35_cmp_eq0011
+    SLICE_X46Y60.X       Tilo                  0.660   _old_mine_count_33<0>13193
+                                                       _old_mine_count_33<0>13193
+    SLICE_X52Y61.G1      net (fanout=1)        1.347   _old_mine_count_33<0>13193
+    SLICE_X52Y61.Y       Tilo                  0.660   _old_mine_count_33<0>13249
+                                                       _old_mine_count_33<0>13208
+    SLICE_X52Y61.F3      net (fanout=1)        0.020   _old_mine_count_33<0>13208/O
+    SLICE_X52Y61.X       Tilo                  0.660   _old_mine_count_33<0>13249
+                                                       _old_mine_count_33<0>13249
+    SLICE_X50Y60.F1      net (fanout=1)        0.387   _old_mine_count_33<0>13249
+    SLICE_X50Y60.X       Tilo                  0.660   mines<37>
+                                                       _old_mine_count_33<0>13393
+    SLICE_X40Y72.G2      net (fanout=1)        1.447   _old_mine_count_33<0>13393
+    SLICE_X40Y72.Y       Tilo                  0.660   N5171
+                                                       _old_mine_count_33<0>13404
+    SLICE_X40Y72.F4      net (fanout=1)        0.020   _old_mine_count_33<0>13404/O
+    SLICE_X40Y72.X       Tilo                  0.660   N5171
+                                                       _old_mine_count_33<0>13685
+    SLICE_X37Y73.G4      net (fanout=5)        0.357   N5171
+    SLICE_X37Y73.Y       Tilo                  0.612   Madd_old_mine_count_45_addsub0000_cy<0>
+                                                       _old_mine_count_36<0>2
+    SLICE_X34Y72.G4      net (fanout=5)        0.397   Madd_old_mine_count_39_addsub0000_cy<0>
+    SLICE_X34Y72.Y       Tilo                  0.660   Madd_old_mine_count_48_addsub0000_cy<1>
+                                                       _old_mine_count_42<1>1
+    SLICE_X34Y72.F4      net (fanout=3)        0.058   Madd_old_mine_count_45_addsub0000_lut<1>
+    SLICE_X34Y72.X       Tilo                  0.660   Madd_old_mine_count_48_addsub0000_cy<1>
+                                                       Madd_old_mine_count_48_addsub0000_cy<1>11
+    SLICE_X36Y71.G3      net (fanout=3)        0.325   Madd_old_mine_count_48_addsub0000_cy<1>
+    SLICE_X36Y71.Y       Tilo                  0.660   Madd_old_mine_count_49_addsub0000_lut<1>
+                                                       polje_0_mux0000<0>3_SW0_SW0
+    SLICE_X40Y69.G1      net (fanout=1)        0.569   N2567
+    SLICE_X40Y69.Y       Tilo                  0.660   N801
+                                                       polje_0_mux0000<0>3
+    SLICE_X44Y60.G3      net (fanout=98)       1.121   N2147
+    SLICE_X44Y60.Y       Tilo                  0.660   polje_3_3
+                                                       polje_3_mux0000<0>_SW0
+    SLICE_X44Y60.F4      net (fanout=1)        0.020   polje_3_mux0000<0>_SW0/O
+    SLICE_X44Y60.CLK     Tfck                  0.776   polje_3_3
+                                                       polje_3_mux0000<0>
+                                                       polje_3_3
+    -------------------------------------------------  ---------------------------
+    Total                                     19.875ns (10.434ns logic, 9.441ns route)
+                                                       (52.5% logic, 47.5% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     0.121ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               polje_index_1 (FF)
+  Destination:          polje_3_3 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      19.871ns (Levels of Logic = 16)
+  Clock Path Skew:      -0.008ns (0.058 - 0.066)
+  Source Clock:         CLK_BUFGP rising at 0.000ns
+  Destination Clock:    CLK_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: polje_index_1 to polje_3_3
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X47Y77.XQ      Tcko                  0.514   polje_index<1>
+                                                       polje_index_1
+    SLICE_X49Y81.G2      net (fanout=409)      1.117   polje_index<1>
+    SLICE_X49Y81.Y       Tilo                  0.612   COND_35_cmp_eq0043
+                                                       SF4811
+    SLICE_X54Y72.G1      net (fanout=29)       1.023   N1875
+    SLICE_X54Y72.Y       Tilo                  0.660   old_mine_count_39_cmp_eq0000161
+                                                       COND_35_cmp_eq00111
+    SLICE_X64Y70.F4      net (fanout=18)       0.708   COND_35_cmp_eq0011
+    SLICE_X64Y70.X       Tilo                  0.660   old_mine_count_39_cmp_eq00001305
+                                                       old_mine_count_39_cmp_eq00001305
+    SLICE_X53Y65.F4      net (fanout=1)        0.857   old_mine_count_39_cmp_eq00001305
+    SLICE_X53Y65.X       Tilo                  0.612   old_mine_count_39_cmp_eq00001337
+                                                       old_mine_count_39_cmp_eq00001337
+    SLICE_X54Y71.F4      net (fanout=1)        0.710   old_mine_count_39_cmp_eq00001337
+    SLICE_X54Y71.X       Tilo                  0.660   old_mine_count_39_cmp_eq00001348
+                                                       old_mine_count_39_cmp_eq00001348
+    SLICE_X49Y76.G3      net (fanout=1)        0.779   old_mine_count_39_cmp_eq00001348
+    SLICE_X49Y76.Y       Tilo                  0.612   old_mine_count_39_cmp_eq00002635
+                                                       old_mine_count_39_cmp_eq00001596
+    SLICE_X49Y76.F4      net (fanout=1)        0.298   old_mine_count_39_cmp_eq00001596/O
+    SLICE_X49Y76.X       Tilo                  0.612   old_mine_count_39_cmp_eq00002635
+                                                       old_mine_count_39_cmp_eq00002635
+    SLICE_X49Y74.F3      net (fanout=1)        0.271   old_mine_count_39_cmp_eq00002635
+    SLICE_X49Y74.X       Tilo                  0.612   old_mine_count_39_cmp_eq0000
+                                                       old_mine_count_39_cmp_eq00003741
+    SLICE_X36Y72.G1      net (fanout=1)        0.667   old_mine_count_39_cmp_eq0000
+    SLICE_X36Y72.Y       Tilo                  0.660   Madd_old_mine_count_42_addsub0000_lut<1>
+                                                       _old_mine_count_39<0>11
+    SLICE_X36Y72.F4      net (fanout=8)        0.085   N5151
+    SLICE_X36Y72.X       Tilo                  0.660   Madd_old_mine_count_42_addsub0000_lut<1>
+                                                       _old_mine_count_39<1>1
+    SLICE_X34Y72.G3      net (fanout=3)        0.313   Madd_old_mine_count_42_addsub0000_lut<1>
+    SLICE_X34Y72.Y       Tilo                  0.660   Madd_old_mine_count_48_addsub0000_cy<1>
+                                                       _old_mine_count_42<1>1
+    SLICE_X34Y72.F4      net (fanout=3)        0.058   Madd_old_mine_count_45_addsub0000_lut<1>
+    SLICE_X34Y72.X       Tilo                  0.660   Madd_old_mine_count_48_addsub0000_cy<1>
+                                                       Madd_old_mine_count_48_addsub0000_cy<1>11
+    SLICE_X36Y71.G3      net (fanout=3)        0.325   Madd_old_mine_count_48_addsub0000_cy<1>
+    SLICE_X36Y71.Y       Tilo                  0.660   Madd_old_mine_count_49_addsub0000_lut<1>
+                                                       polje_0_mux0000<0>3_SW0_SW0
+    SLICE_X40Y69.G1      net (fanout=1)        0.569   N2567
+    SLICE_X40Y69.Y       Tilo                  0.660   N801
+                                                       polje_0_mux0000<0>3
+    SLICE_X44Y60.G3      net (fanout=98)       1.121   N2147
+    SLICE_X44Y60.Y       Tilo                  0.660   polje_3_3
+                                                       polje_3_mux0000<0>_SW0
+    SLICE_X44Y60.F4      net (fanout=1)        0.020   polje_3_mux0000<0>_SW0/O
+    SLICE_X44Y60.CLK     Tfck                  0.776   polje_3_3
+                                                       polje_3_mux0000<0>
+                                                       polje_3_3
+    -------------------------------------------------  ---------------------------
+    Total                                     19.871ns (10.950ns logic, 8.921ns route)
+                                                       (55.1% logic, 44.9% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point polje_40_3 (SLICE_X42Y60.F4), 244202 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     0.079ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               polje_index_1 (FF)
+  Destination:          polje_40_3 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      19.919ns (Levels of Logic = 15)
+  Clock Path Skew:      -0.002ns (0.064 - 0.066)
+  Source Clock:         CLK_BUFGP rising at 0.000ns
+  Destination Clock:    CLK_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: polje_index_1 to polje_40_3
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X47Y77.XQ      Tcko                  0.514   polje_index<1>
+                                                       polje_index_1
+    SLICE_X49Y81.G2      net (fanout=409)      1.117   polje_index<1>
+    SLICE_X49Y81.Y       Tilo                  0.612   COND_35_cmp_eq0043
+                                                       SF4811
+    SLICE_X54Y72.G1      net (fanout=29)       1.023   N1875
+    SLICE_X54Y72.Y       Tilo                  0.660   old_mine_count_39_cmp_eq0000161
+                                                       COND_35_cmp_eq00111
+    SLICE_X46Y60.F3      net (fanout=18)       1.233   COND_35_cmp_eq0011
+    SLICE_X46Y60.X       Tilo                  0.660   _old_mine_count_33<0>13193
+                                                       _old_mine_count_33<0>13193
+    SLICE_X52Y61.G1      net (fanout=1)        1.347   _old_mine_count_33<0>13193
+    SLICE_X52Y61.Y       Tilo                  0.660   _old_mine_count_33<0>13249
+                                                       _old_mine_count_33<0>13208
+    SLICE_X52Y61.F3      net (fanout=1)        0.020   _old_mine_count_33<0>13208/O
+    SLICE_X52Y61.X       Tilo                  0.660   _old_mine_count_33<0>13249
+                                                       _old_mine_count_33<0>13249
+    SLICE_X50Y60.F1      net (fanout=1)        0.387   _old_mine_count_33<0>13249
+    SLICE_X50Y60.X       Tilo                  0.660   mines<37>
+                                                       _old_mine_count_33<0>13393
+    SLICE_X40Y72.G2      net (fanout=1)        1.447   _old_mine_count_33<0>13393
+    SLICE_X40Y72.Y       Tilo                  0.660   N5171
+                                                       _old_mine_count_33<0>13404
+    SLICE_X40Y72.F4      net (fanout=1)        0.020   _old_mine_count_33<0>13404/O
+    SLICE_X40Y72.X       Tilo                  0.660   N5171
+                                                       _old_mine_count_33<0>13685
+    SLICE_X36Y72.F1      net (fanout=5)        0.438   N5171
+    SLICE_X36Y72.X       Tilo                  0.660   Madd_old_mine_count_42_addsub0000_lut<1>
+                                                       _old_mine_count_39<1>1
+    SLICE_X34Y72.G3      net (fanout=3)        0.313   Madd_old_mine_count_42_addsub0000_lut<1>
+    SLICE_X34Y72.Y       Tilo                  0.660   Madd_old_mine_count_48_addsub0000_cy<1>
+                                                       _old_mine_count_42<1>1
+    SLICE_X34Y72.F4      net (fanout=3)        0.058   Madd_old_mine_count_45_addsub0000_lut<1>
+    SLICE_X34Y72.X       Tilo                  0.660   Madd_old_mine_count_48_addsub0000_cy<1>
+                                                       Madd_old_mine_count_48_addsub0000_cy<1>11
+    SLICE_X36Y71.G3      net (fanout=3)        0.325   Madd_old_mine_count_48_addsub0000_cy<1>
+    SLICE_X36Y71.Y       Tilo                  0.660   Madd_old_mine_count_49_addsub0000_lut<1>
+                                                       polje_0_mux0000<0>3_SW0_SW0
+    SLICE_X40Y69.G1      net (fanout=1)        0.569   N2567
+    SLICE_X40Y69.Y       Tilo                  0.660   N801
+                                                       polje_0_mux0000<0>3
+    SLICE_X42Y60.G3      net (fanout=98)       1.120   N2147
+    SLICE_X42Y60.Y       Tilo                  0.660   polje_40_3
+                                                       polje_40_mux0000<0>_SW0
+    SLICE_X42Y60.F4      net (fanout=1)        0.020   polje_40_mux0000<0>_SW0/O
+    SLICE_X42Y60.CLK     Tfck                  0.776   polje_40_3
+                                                       polje_40_mux0000<0>
+                                                       polje_40_3
+    -------------------------------------------------  ---------------------------
+    Total                                     19.919ns (10.482ns logic, 9.437ns route)
+                                                       (52.6% logic, 47.4% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     0.124ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               polje_index_1 (FF)
+  Destination:          polje_40_3 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      19.874ns (Levels of Logic = 15)
+  Clock Path Skew:      -0.002ns (0.064 - 0.066)
+  Source Clock:         CLK_BUFGP rising at 0.000ns
+  Destination Clock:    CLK_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: polje_index_1 to polje_40_3
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X47Y77.XQ      Tcko                  0.514   polje_index<1>
+                                                       polje_index_1
+    SLICE_X49Y81.G2      net (fanout=409)      1.117   polje_index<1>
+    SLICE_X49Y81.Y       Tilo                  0.612   COND_35_cmp_eq0043
+                                                       SF4811
+    SLICE_X54Y72.G1      net (fanout=29)       1.023   N1875
+    SLICE_X54Y72.Y       Tilo                  0.660   old_mine_count_39_cmp_eq0000161
+                                                       COND_35_cmp_eq00111
+    SLICE_X46Y60.F3      net (fanout=18)       1.233   COND_35_cmp_eq0011
+    SLICE_X46Y60.X       Tilo                  0.660   _old_mine_count_33<0>13193
+                                                       _old_mine_count_33<0>13193
+    SLICE_X52Y61.G1      net (fanout=1)        1.347   _old_mine_count_33<0>13193
+    SLICE_X52Y61.Y       Tilo                  0.660   _old_mine_count_33<0>13249
+                                                       _old_mine_count_33<0>13208
+    SLICE_X52Y61.F3      net (fanout=1)        0.020   _old_mine_count_33<0>13208/O
+    SLICE_X52Y61.X       Tilo                  0.660   _old_mine_count_33<0>13249
+                                                       _old_mine_count_33<0>13249
+    SLICE_X50Y60.F1      net (fanout=1)        0.387   _old_mine_count_33<0>13249
+    SLICE_X50Y60.X       Tilo                  0.660   mines<37>
+                                                       _old_mine_count_33<0>13393
+    SLICE_X40Y72.G2      net (fanout=1)        1.447   _old_mine_count_33<0>13393
+    SLICE_X40Y72.Y       Tilo                  0.660   N5171
+                                                       _old_mine_count_33<0>13404
+    SLICE_X40Y72.F4      net (fanout=1)        0.020   _old_mine_count_33<0>13404/O
+    SLICE_X40Y72.X       Tilo                  0.660   N5171
+                                                       _old_mine_count_33<0>13685
+    SLICE_X37Y73.G4      net (fanout=5)        0.357   N5171
+    SLICE_X37Y73.Y       Tilo                  0.612   Madd_old_mine_count_45_addsub0000_cy<0>
+                                                       _old_mine_count_36<0>2
+    SLICE_X34Y72.G4      net (fanout=5)        0.397   Madd_old_mine_count_39_addsub0000_cy<0>
+    SLICE_X34Y72.Y       Tilo                  0.660   Madd_old_mine_count_48_addsub0000_cy<1>
+                                                       _old_mine_count_42<1>1
+    SLICE_X34Y72.F4      net (fanout=3)        0.058   Madd_old_mine_count_45_addsub0000_lut<1>
+    SLICE_X34Y72.X       Tilo                  0.660   Madd_old_mine_count_48_addsub0000_cy<1>
+                                                       Madd_old_mine_count_48_addsub0000_cy<1>11
+    SLICE_X36Y71.G3      net (fanout=3)        0.325   Madd_old_mine_count_48_addsub0000_cy<1>
+    SLICE_X36Y71.Y       Tilo                  0.660   Madd_old_mine_count_49_addsub0000_lut<1>
+                                                       polje_0_mux0000<0>3_SW0_SW0
+    SLICE_X40Y69.G1      net (fanout=1)        0.569   N2567
+    SLICE_X40Y69.Y       Tilo                  0.660   N801
+                                                       polje_0_mux0000<0>3
+    SLICE_X42Y60.G3      net (fanout=98)       1.120   N2147
+    SLICE_X42Y60.Y       Tilo                  0.660   polje_40_3
+                                                       polje_40_mux0000<0>_SW0
+    SLICE_X42Y60.F4      net (fanout=1)        0.020   polje_40_mux0000<0>_SW0/O
+    SLICE_X42Y60.CLK     Tfck                  0.776   polje_40_3
+                                                       polje_40_mux0000<0>
+                                                       polje_40_3
+    -------------------------------------------------  ---------------------------
+    Total                                     19.874ns (10.434ns logic, 9.440ns route)
+                                                       (52.5% logic, 47.5% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     0.128ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               polje_index_1 (FF)
+  Destination:          polje_40_3 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      19.870ns (Levels of Logic = 16)
+  Clock Path Skew:      -0.002ns (0.064 - 0.066)
+  Source Clock:         CLK_BUFGP rising at 0.000ns
+  Destination Clock:    CLK_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: polje_index_1 to polje_40_3
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X47Y77.XQ      Tcko                  0.514   polje_index<1>
+                                                       polje_index_1
+    SLICE_X49Y81.G2      net (fanout=409)      1.117   polje_index<1>
+    SLICE_X49Y81.Y       Tilo                  0.612   COND_35_cmp_eq0043
+                                                       SF4811
+    SLICE_X54Y72.G1      net (fanout=29)       1.023   N1875
+    SLICE_X54Y72.Y       Tilo                  0.660   old_mine_count_39_cmp_eq0000161
+                                                       COND_35_cmp_eq00111
+    SLICE_X64Y70.F4      net (fanout=18)       0.708   COND_35_cmp_eq0011
+    SLICE_X64Y70.X       Tilo                  0.660   old_mine_count_39_cmp_eq00001305
+                                                       old_mine_count_39_cmp_eq00001305
+    SLICE_X53Y65.F4      net (fanout=1)        0.857   old_mine_count_39_cmp_eq00001305
+    SLICE_X53Y65.X       Tilo                  0.612   old_mine_count_39_cmp_eq00001337
+                                                       old_mine_count_39_cmp_eq00001337
+    SLICE_X54Y71.F4      net (fanout=1)        0.710   old_mine_count_39_cmp_eq00001337
+    SLICE_X54Y71.X       Tilo                  0.660   old_mine_count_39_cmp_eq00001348
+                                                       old_mine_count_39_cmp_eq00001348
+    SLICE_X49Y76.G3      net (fanout=1)        0.779   old_mine_count_39_cmp_eq00001348
+    SLICE_X49Y76.Y       Tilo                  0.612   old_mine_count_39_cmp_eq00002635
+                                                       old_mine_count_39_cmp_eq00001596
+    SLICE_X49Y76.F4      net (fanout=1)        0.298   old_mine_count_39_cmp_eq00001596/O
+    SLICE_X49Y76.X       Tilo                  0.612   old_mine_count_39_cmp_eq00002635
+                                                       old_mine_count_39_cmp_eq00002635
+    SLICE_X49Y74.F3      net (fanout=1)        0.271   old_mine_count_39_cmp_eq00002635
+    SLICE_X49Y74.X       Tilo                  0.612   old_mine_count_39_cmp_eq0000
+                                                       old_mine_count_39_cmp_eq00003741
+    SLICE_X36Y72.G1      net (fanout=1)        0.667   old_mine_count_39_cmp_eq0000
+    SLICE_X36Y72.Y       Tilo                  0.660   Madd_old_mine_count_42_addsub0000_lut<1>
+                                                       _old_mine_count_39<0>11
+    SLICE_X36Y72.F4      net (fanout=8)        0.085   N5151
+    SLICE_X36Y72.X       Tilo                  0.660   Madd_old_mine_count_42_addsub0000_lut<1>
+                                                       _old_mine_count_39<1>1
+    SLICE_X34Y72.G3      net (fanout=3)        0.313   Madd_old_mine_count_42_addsub0000_lut<1>
+    SLICE_X34Y72.Y       Tilo                  0.660   Madd_old_mine_count_48_addsub0000_cy<1>
+                                                       _old_mine_count_42<1>1
+    SLICE_X34Y72.F4      net (fanout=3)        0.058   Madd_old_mine_count_45_addsub0000_lut<1>
+    SLICE_X34Y72.X       Tilo                  0.660   Madd_old_mine_count_48_addsub0000_cy<1>
+                                                       Madd_old_mine_count_48_addsub0000_cy<1>11
+    SLICE_X36Y71.G3      net (fanout=3)        0.325   Madd_old_mine_count_48_addsub0000_cy<1>
+    SLICE_X36Y71.Y       Tilo                  0.660   Madd_old_mine_count_49_addsub0000_lut<1>
+                                                       polje_0_mux0000<0>3_SW0_SW0
+    SLICE_X40Y69.G1      net (fanout=1)        0.569   N2567
+    SLICE_X40Y69.Y       Tilo                  0.660   N801
+                                                       polje_0_mux0000<0>3
+    SLICE_X42Y60.G3      net (fanout=98)       1.120   N2147
+    SLICE_X42Y60.Y       Tilo                  0.660   polje_40_3
+                                                       polje_40_mux0000<0>_SW0
+    SLICE_X42Y60.F4      net (fanout=1)        0.020   polje_40_mux0000<0>_SW0/O
+    SLICE_X42Y60.CLK     Tfck                  0.776   polje_40_3
+                                                       polje_40_mux0000<0>
+                                                       polje_40_3
+    -------------------------------------------------  ---------------------------
+    Total                                     19.870ns (10.950ns logic, 8.920ns route)
+                                                       (55.1% logic, 44.9% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point polje_19_3 (SLICE_X38Y60.F4), 244202 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     0.081ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               polje_index_1 (FF)
+  Destination:          polje_19_3 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      19.919ns (Levels of Logic = 15)
+  Clock Path Skew:      0.000ns
+  Source Clock:         CLK_BUFGP rising at 0.000ns
+  Destination Clock:    CLK_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: polje_index_1 to polje_19_3
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X47Y77.XQ      Tcko                  0.514   polje_index<1>
+                                                       polje_index_1
+    SLICE_X49Y81.G2      net (fanout=409)      1.117   polje_index<1>
+    SLICE_X49Y81.Y       Tilo                  0.612   COND_35_cmp_eq0043
+                                                       SF4811
+    SLICE_X54Y72.G1      net (fanout=29)       1.023   N1875
+    SLICE_X54Y72.Y       Tilo                  0.660   old_mine_count_39_cmp_eq0000161
+                                                       COND_35_cmp_eq00111
+    SLICE_X46Y60.F3      net (fanout=18)       1.233   COND_35_cmp_eq0011
+    SLICE_X46Y60.X       Tilo                  0.660   _old_mine_count_33<0>13193
+                                                       _old_mine_count_33<0>13193
+    SLICE_X52Y61.G1      net (fanout=1)        1.347   _old_mine_count_33<0>13193
+    SLICE_X52Y61.Y       Tilo                  0.660   _old_mine_count_33<0>13249
+                                                       _old_mine_count_33<0>13208
+    SLICE_X52Y61.F3      net (fanout=1)        0.020   _old_mine_count_33<0>13208/O
+    SLICE_X52Y61.X       Tilo                  0.660   _old_mine_count_33<0>13249
+                                                       _old_mine_count_33<0>13249
+    SLICE_X50Y60.F1      net (fanout=1)        0.387   _old_mine_count_33<0>13249
+    SLICE_X50Y60.X       Tilo                  0.660   mines<37>
+                                                       _old_mine_count_33<0>13393
+    SLICE_X40Y72.G2      net (fanout=1)        1.447   _old_mine_count_33<0>13393
+    SLICE_X40Y72.Y       Tilo                  0.660   N5171
+                                                       _old_mine_count_33<0>13404
+    SLICE_X40Y72.F4      net (fanout=1)        0.020   _old_mine_count_33<0>13404/O
+    SLICE_X40Y72.X       Tilo                  0.660   N5171
+                                                       _old_mine_count_33<0>13685
+    SLICE_X36Y72.F1      net (fanout=5)        0.438   N5171
+    SLICE_X36Y72.X       Tilo                  0.660   Madd_old_mine_count_42_addsub0000_lut<1>
+                                                       _old_mine_count_39<1>1
+    SLICE_X34Y72.G3      net (fanout=3)        0.313   Madd_old_mine_count_42_addsub0000_lut<1>
+    SLICE_X34Y72.Y       Tilo                  0.660   Madd_old_mine_count_48_addsub0000_cy<1>
+                                                       _old_mine_count_42<1>1
+    SLICE_X34Y72.F4      net (fanout=3)        0.058   Madd_old_mine_count_45_addsub0000_lut<1>
+    SLICE_X34Y72.X       Tilo                  0.660   Madd_old_mine_count_48_addsub0000_cy<1>
+                                                       Madd_old_mine_count_48_addsub0000_cy<1>11
+    SLICE_X36Y71.G3      net (fanout=3)        0.325   Madd_old_mine_count_48_addsub0000_cy<1>
+    SLICE_X36Y71.Y       Tilo                  0.660   Madd_old_mine_count_49_addsub0000_lut<1>
+                                                       polje_0_mux0000<0>3_SW0_SW0
+    SLICE_X40Y69.G1      net (fanout=1)        0.569   N2567
+    SLICE_X40Y69.Y       Tilo                  0.660   N801
+                                                       polje_0_mux0000<0>3
+    SLICE_X38Y60.G3      net (fanout=98)       1.120   N2147
+    SLICE_X38Y60.Y       Tilo                  0.660   polje_19_3
+                                                       polje_19_mux0000<0>_SW0
+    SLICE_X38Y60.F4      net (fanout=1)        0.020   polje_19_mux0000<0>_SW0/O
+    SLICE_X38Y60.CLK     Tfck                  0.776   polje_19_3
+                                                       polje_19_mux0000<0>
+                                                       polje_19_3
+    -------------------------------------------------  ---------------------------
+    Total                                     19.919ns (10.482ns logic, 9.437ns route)
+                                                       (52.6% logic, 47.4% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     0.126ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               polje_index_1 (FF)
+  Destination:          polje_19_3 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      19.874ns (Levels of Logic = 15)
+  Clock Path Skew:      0.000ns
+  Source Clock:         CLK_BUFGP rising at 0.000ns
+  Destination Clock:    CLK_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: polje_index_1 to polje_19_3
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X47Y77.XQ      Tcko                  0.514   polje_index<1>
+                                                       polje_index_1
+    SLICE_X49Y81.G2      net (fanout=409)      1.117   polje_index<1>
+    SLICE_X49Y81.Y       Tilo                  0.612   COND_35_cmp_eq0043
+                                                       SF4811
+    SLICE_X54Y72.G1      net (fanout=29)       1.023   N1875
+    SLICE_X54Y72.Y       Tilo                  0.660   old_mine_count_39_cmp_eq0000161
+                                                       COND_35_cmp_eq00111
+    SLICE_X46Y60.F3      net (fanout=18)       1.233   COND_35_cmp_eq0011
+    SLICE_X46Y60.X       Tilo                  0.660   _old_mine_count_33<0>13193
+                                                       _old_mine_count_33<0>13193
+    SLICE_X52Y61.G1      net (fanout=1)        1.347   _old_mine_count_33<0>13193
+    SLICE_X52Y61.Y       Tilo                  0.660   _old_mine_count_33<0>13249
+                                                       _old_mine_count_33<0>13208
+    SLICE_X52Y61.F3      net (fanout=1)        0.020   _old_mine_count_33<0>13208/O
+    SLICE_X52Y61.X       Tilo                  0.660   _old_mine_count_33<0>13249
+                                                       _old_mine_count_33<0>13249
+    SLICE_X50Y60.F1      net (fanout=1)        0.387   _old_mine_count_33<0>13249
+    SLICE_X50Y60.X       Tilo                  0.660   mines<37>
+                                                       _old_mine_count_33<0>13393
+    SLICE_X40Y72.G2      net (fanout=1)        1.447   _old_mine_count_33<0>13393
+    SLICE_X40Y72.Y       Tilo                  0.660   N5171
+                                                       _old_mine_count_33<0>13404
+    SLICE_X40Y72.F4      net (fanout=1)        0.020   _old_mine_count_33<0>13404/O
+    SLICE_X40Y72.X       Tilo                  0.660   N5171
+                                                       _old_mine_count_33<0>13685
+    SLICE_X37Y73.G4      net (fanout=5)        0.357   N5171
+    SLICE_X37Y73.Y       Tilo                  0.612   Madd_old_mine_count_45_addsub0000_cy<0>
+                                                       _old_mine_count_36<0>2
+    SLICE_X34Y72.G4      net (fanout=5)        0.397   Madd_old_mine_count_39_addsub0000_cy<0>
+    SLICE_X34Y72.Y       Tilo                  0.660   Madd_old_mine_count_48_addsub0000_cy<1>
+                                                       _old_mine_count_42<1>1
+    SLICE_X34Y72.F4      net (fanout=3)        0.058   Madd_old_mine_count_45_addsub0000_lut<1>
+    SLICE_X34Y72.X       Tilo                  0.660   Madd_old_mine_count_48_addsub0000_cy<1>
+                                                       Madd_old_mine_count_48_addsub0000_cy<1>11
+    SLICE_X36Y71.G3      net (fanout=3)        0.325   Madd_old_mine_count_48_addsub0000_cy<1>
+    SLICE_X36Y71.Y       Tilo                  0.660   Madd_old_mine_count_49_addsub0000_lut<1>
+                                                       polje_0_mux0000<0>3_SW0_SW0
+    SLICE_X40Y69.G1      net (fanout=1)        0.569   N2567
+    SLICE_X40Y69.Y       Tilo                  0.660   N801
+                                                       polje_0_mux0000<0>3
+    SLICE_X38Y60.G3      net (fanout=98)       1.120   N2147
+    SLICE_X38Y60.Y       Tilo                  0.660   polje_19_3
+                                                       polje_19_mux0000<0>_SW0
+    SLICE_X38Y60.F4      net (fanout=1)        0.020   polje_19_mux0000<0>_SW0/O
+    SLICE_X38Y60.CLK     Tfck                  0.776   polje_19_3
+                                                       polje_19_mux0000<0>
+                                                       polje_19_3
+    -------------------------------------------------  ---------------------------
+    Total                                     19.874ns (10.434ns logic, 9.440ns route)
+                                                       (52.5% logic, 47.5% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     0.130ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               polje_index_1 (FF)
+  Destination:          polje_19_3 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      19.870ns (Levels of Logic = 16)
+  Clock Path Skew:      0.000ns
+  Source Clock:         CLK_BUFGP rising at 0.000ns
+  Destination Clock:    CLK_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: polje_index_1 to polje_19_3
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X47Y77.XQ      Tcko                  0.514   polje_index<1>
+                                                       polje_index_1
+    SLICE_X49Y81.G2      net (fanout=409)      1.117   polje_index<1>
+    SLICE_X49Y81.Y       Tilo                  0.612   COND_35_cmp_eq0043
+                                                       SF4811
+    SLICE_X54Y72.G1      net (fanout=29)       1.023   N1875
+    SLICE_X54Y72.Y       Tilo                  0.660   old_mine_count_39_cmp_eq0000161
+                                                       COND_35_cmp_eq00111
+    SLICE_X64Y70.F4      net (fanout=18)       0.708   COND_35_cmp_eq0011
+    SLICE_X64Y70.X       Tilo                  0.660   old_mine_count_39_cmp_eq00001305
+                                                       old_mine_count_39_cmp_eq00001305
+    SLICE_X53Y65.F4      net (fanout=1)        0.857   old_mine_count_39_cmp_eq00001305
+    SLICE_X53Y65.X       Tilo                  0.612   old_mine_count_39_cmp_eq00001337
+                                                       old_mine_count_39_cmp_eq00001337
+    SLICE_X54Y71.F4      net (fanout=1)        0.710   old_mine_count_39_cmp_eq00001337
+    SLICE_X54Y71.X       Tilo                  0.660   old_mine_count_39_cmp_eq00001348
+                                                       old_mine_count_39_cmp_eq00001348
+    SLICE_X49Y76.G3      net (fanout=1)        0.779   old_mine_count_39_cmp_eq00001348
+    SLICE_X49Y76.Y       Tilo                  0.612   old_mine_count_39_cmp_eq00002635
+                                                       old_mine_count_39_cmp_eq00001596
+    SLICE_X49Y76.F4      net (fanout=1)        0.298   old_mine_count_39_cmp_eq00001596/O
+    SLICE_X49Y76.X       Tilo                  0.612   old_mine_count_39_cmp_eq00002635
+                                                       old_mine_count_39_cmp_eq00002635
+    SLICE_X49Y74.F3      net (fanout=1)        0.271   old_mine_count_39_cmp_eq00002635
+    SLICE_X49Y74.X       Tilo                  0.612   old_mine_count_39_cmp_eq0000
+                                                       old_mine_count_39_cmp_eq00003741
+    SLICE_X36Y72.G1      net (fanout=1)        0.667   old_mine_count_39_cmp_eq0000
+    SLICE_X36Y72.Y       Tilo                  0.660   Madd_old_mine_count_42_addsub0000_lut<1>
+                                                       _old_mine_count_39<0>11
+    SLICE_X36Y72.F4      net (fanout=8)        0.085   N5151
+    SLICE_X36Y72.X       Tilo                  0.660   Madd_old_mine_count_42_addsub0000_lut<1>
+                                                       _old_mine_count_39<1>1
+    SLICE_X34Y72.G3      net (fanout=3)        0.313   Madd_old_mine_count_42_addsub0000_lut<1>
+    SLICE_X34Y72.Y       Tilo                  0.660   Madd_old_mine_count_48_addsub0000_cy<1>
+                                                       _old_mine_count_42<1>1
+    SLICE_X34Y72.F4      net (fanout=3)        0.058   Madd_old_mine_count_45_addsub0000_lut<1>
+    SLICE_X34Y72.X       Tilo                  0.660   Madd_old_mine_count_48_addsub0000_cy<1>
+                                                       Madd_old_mine_count_48_addsub0000_cy<1>11
+    SLICE_X36Y71.G3      net (fanout=3)        0.325   Madd_old_mine_count_48_addsub0000_cy<1>
+    SLICE_X36Y71.Y       Tilo                  0.660   Madd_old_mine_count_49_addsub0000_lut<1>
+                                                       polje_0_mux0000<0>3_SW0_SW0
+    SLICE_X40Y69.G1      net (fanout=1)        0.569   N2567
+    SLICE_X40Y69.Y       Tilo                  0.660   N801
+                                                       polje_0_mux0000<0>3
+    SLICE_X38Y60.G3      net (fanout=98)       1.120   N2147
+    SLICE_X38Y60.Y       Tilo                  0.660   polje_19_3
+                                                       polje_19_mux0000<0>_SW0
+    SLICE_X38Y60.F4      net (fanout=1)        0.020   polje_19_mux0000<0>_SW0/O
+    SLICE_X38Y60.CLK     Tfck                  0.776   polje_19_3
+                                                       polje_19_mux0000<0>
+                                                       polje_19_3
+    -------------------------------------------------  ---------------------------
+    Total                                     19.870ns (10.950ns logic, 8.920ns route)
+                                                       (55.1% logic, 44.9% route)
+
+--------------------------------------------------------------------------------
+
+Hold Paths: NET "CLK_BUFGP/IBUFG" PERIOD = 20 ns HIGH 40%;
+--------------------------------------------------------------------------------
+
+Paths for end point mouse_unit/ps2_unit/ps2_tx_unit/filter_reg_6 (SLICE_X65Y37.BX), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      0.844ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               mouse_unit/ps2_unit/ps2_tx_unit/filter_reg_7 (FF)
+  Destination:          mouse_unit/ps2_unit/ps2_tx_unit/filter_reg_6 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      0.844ns (Levels of Logic = 0)
+  Clock Path Skew:      0.000ns
+  Source Clock:         CLK_BUFGP rising at 20.000ns
+  Destination Clock:    CLK_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: mouse_unit/ps2_unit/ps2_tx_unit/filter_reg_7 to mouse_unit/ps2_unit/ps2_tx_unit/filter_reg_6
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X65Y37.YQ      Tcko                  0.409   mouse_unit/ps2_unit/ps2_tx_unit/filter_reg<6>
+                                                       mouse_unit/ps2_unit/ps2_tx_unit/filter_reg_7
+    SLICE_X65Y37.BX      net (fanout=3)        0.355   mouse_unit/ps2_unit/ps2_tx_unit/filter_reg<7>
+    SLICE_X65Y37.CLK     Tckdi       (-Th)    -0.080   mouse_unit/ps2_unit/ps2_tx_unit/filter_reg<6>
+                                                       mouse_unit/ps2_unit/ps2_tx_unit/filter_reg_6
+    -------------------------------------------------  ---------------------------
+    Total                                      0.844ns (0.489ns logic, 0.355ns route)
+                                                       (57.9% logic, 42.1% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point mouse_unit/ps2_unit/ps2_tx_unit/filter_reg_0 (SLICE_X55Y18.BY), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      0.860ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               mouse_unit/ps2_unit/ps2_tx_unit/filter_reg_1 (FF)
+  Destination:          mouse_unit/ps2_unit/ps2_tx_unit/filter_reg_0 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      0.860ns (Levels of Logic = 0)
+  Clock Path Skew:      0.000ns
+  Source Clock:         CLK_BUFGP rising at 20.000ns
+  Destination Clock:    CLK_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: mouse_unit/ps2_unit/ps2_tx_unit/filter_reg_1 to mouse_unit/ps2_unit/ps2_tx_unit/filter_reg_0
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X55Y18.XQ      Tcko                  0.411   mouse_unit/ps2_unit/ps2_tx_unit/filter_reg<1>
+                                                       mouse_unit/ps2_unit/ps2_tx_unit/filter_reg_1
+    SLICE_X55Y18.BY      net (fanout=4)        0.332   mouse_unit/ps2_unit/ps2_tx_unit/filter_reg<1>
+    SLICE_X55Y18.CLK     Tckdi       (-Th)    -0.117   mouse_unit/ps2_unit/ps2_tx_unit/filter_reg<1>
+                                                       mouse_unit/ps2_unit/ps2_tx_unit/filter_reg_0
+    -------------------------------------------------  ---------------------------
+    Total                                      0.860ns (0.528ns logic, 0.332ns route)
+                                                       (61.4% logic, 38.6% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point mouse_unit/ps2_unit/ps2_tx_unit/filter_reg_2 (SLICE_X53Y43.BY), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      0.894ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               mouse_unit/ps2_unit/ps2_tx_unit/filter_reg_3 (FF)
+  Destination:          mouse_unit/ps2_unit/ps2_tx_unit/filter_reg_2 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      0.894ns (Levels of Logic = 0)
+  Clock Path Skew:      0.000ns
+  Source Clock:         CLK_BUFGP rising at 20.000ns
+  Destination Clock:    CLK_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: mouse_unit/ps2_unit/ps2_tx_unit/filter_reg_3 to mouse_unit/ps2_unit/ps2_tx_unit/filter_reg_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X53Y43.XQ      Tcko                  0.411   mouse_unit/ps2_unit/ps2_tx_unit/filter_reg<3>
+                                                       mouse_unit/ps2_unit/ps2_tx_unit/filter_reg_3
+    SLICE_X53Y43.BY      net (fanout=4)        0.366   mouse_unit/ps2_unit/ps2_tx_unit/filter_reg<3>
+    SLICE_X53Y43.CLK     Tckdi       (-Th)    -0.117   mouse_unit/ps2_unit/ps2_tx_unit/filter_reg<3>
+                                                       mouse_unit/ps2_unit/ps2_tx_unit/filter_reg_2
+    -------------------------------------------------  ---------------------------
+    Total                                      0.894ns (0.528ns logic, 0.366ns route)
+                                                       (59.1% logic, 40.9% route)
+
+--------------------------------------------------------------------------------
+
+Component Switching Limit Checks: NET "CLK_BUFGP/IBUFG" PERIOD = 20 ns HIGH 40%;
+--------------------------------------------------------------------------------
+Slack: 18.203ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 20.000ns
+  High pulse: 8.000ns
+  High pulse limit: 0.719ns (Tch)
+  Physical resource: mines<29>/CLK
+  Logical resource: mines_29/CK
+  Location pin: SLICE_X42Y29.CLK
+  Clock network: CLK_BUFGP
+--------------------------------------------------------------------------------
+Slack: 18.203ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 20.000ns
+  High pulse: 8.000ns
+  High pulse limit: 0.719ns (Tch)
+  Physical resource: zero_opening_57_0/CLK
+  Logical resource: zero_opening_57_0/CK
+  Location pin: SLICE_X36Y35.CLK
+  Clock network: CLK_BUFGP
+--------------------------------------------------------------------------------
+Slack: 18.203ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 20.000ns
+  High pulse: 8.000ns
+  High pulse limit: 0.719ns (Tch)
+  Physical resource: mines<31>/CLK
+  Logical resource: mines_31/CK
+  Location pin: SLICE_X30Y33.CLK
+  Clock network: CLK_BUFGP
+--------------------------------------------------------------------------------
+
+
+All constraints were met.
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Clock to Setup on destination clock CLK
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+CLK            |   19.928|         |         |         |
+---------------+---------+---------+---------+---------+
+
+
+Timing summary:
+---------------
+
+Timing errors: 0  Score: 0  (Setup/Max: 0, Hold: 0)
+
+Constraints cover 42815745 paths, 0 nets, and 34128 connections
+
+Design statistics:
+   Minimum period:  19.928ns{1}   (Maximum frequency:  50.181MHz)
+
+
+------------------------------------Footnotes-----------------------------------
+1)  The minimum period statistic assumes all single cycle delays.
+
+Analysis completed Wed Jul 09 15:43:06 2025 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 258 MB
+
+
+

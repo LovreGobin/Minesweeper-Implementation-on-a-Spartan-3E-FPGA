@@ -1,0 +1,8 @@
+Release 12.1 Drc M.53d (lin64)
+Copyright (c) 1995-2010 Xilinx, Inc.  All rights reserved.
+
+Thu Aug  4 21:39:26 2011
+
+drc -z ps2_mouse_interface.ncd ps2_mouse_interface.pcf
+
+DRC detected 0 errors and 0 warnings.

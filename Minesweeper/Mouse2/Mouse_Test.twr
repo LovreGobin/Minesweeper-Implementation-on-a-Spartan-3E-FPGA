@@ -1,0 +1,522 @@
+--------------------------------------------------------------------------------
+Release 12.1 Trace  (lin64)
+Copyright (c) 1995-2010 Xilinx, Inc.  All rights reserved.
+
+/opt/Xilinx/12.1/ISE_DS/ISE/bin/lin64/unwrapped/trce -intstyle ise -v 3 -s 4 -n
+3 -fastpaths -xml Mouse_Test.twx Mouse_Test.ncd -o Mouse_Test.twr
+Mouse_Test.pcf -ucf Mouse_Test.ucf
+
+Design file:              Mouse_Test.ncd
+Physical constraint file: Mouse_Test.pcf
+Device,package,speed:     xc3s500e,fg320,-4 (PRODUCTION 1.27 2010-04-09)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+INFO:Timing:3390 - This architecture does not support a default System Jitter 
+   value, please add SYSTEM_JITTER constraint to the UCF to modify the Clock 
+   Uncertainty calculation.
+INFO:Timing:3389 - This architecture does not support 'Discrete Jitter' and 
+   'Phase Error' calculations, these terms will be zero in the Clock 
+   Uncertainty calculation.  Please make appropriate modification to 
+   SYSTEM_JITTER to account for the unsupported Discrete Jitter and Phase 
+   Error.
+
+================================================================================
+Timing constraint: NET "CLK_50MHZ_BUFGP/IBUFG" PERIOD = 20 ns HIGH 40%;
+
+ 1042 paths analyzed, 235 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
+ Minimum period is   7.805ns.
+--------------------------------------------------------------------------------
+
+Paths for end point mouse/bit_count_1 (SLICE_X50Y80.SR), 18 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     12.195ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               mouse/watchdog_timer_count_2 (FF)
+  Destination:          mouse/bit_count_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      7.805ns (Levels of Logic = 3)
+  Clock Path Skew:      0.000ns
+  Source Clock:         CLK_50MHZ_BUFGP rising at 0.000ns
+  Destination Clock:    CLK_50MHZ_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: mouse/watchdog_timer_count_2 to mouse/bit_count_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X49Y81.XQ      Tcko                  0.591   mouse/watchdog_timer_count<2>
+                                                       mouse/watchdog_timer_count_2
+    SLICE_X48Y80.G4      net (fanout=2)        0.787   mouse/watchdog_timer_count<2>
+    SLICE_X48Y80.Y       Tilo                  0.759   mouse/watchdog_timer_done
+                                                       mouse/watchdog_timer_done4
+    SLICE_X48Y80.F1      net (fanout=2)        0.886   mouse/watchdog_timer_done4
+    SLICE_X48Y80.X       Tilo                  0.759   mouse/watchdog_timer_done
+                                                       mouse/watchdog_timer_done53
+    SLICE_X52Y81.F2      net (fanout=5)        0.970   mouse/watchdog_timer_done
+    SLICE_X52Y81.X       Tilo                  0.759   mouse/bit_count_and0000
+                                                       mouse/bit_count_and00001
+    SLICE_X50Y80.SR      net (fanout=4)        1.384   mouse/bit_count_and0000
+    SLICE_X50Y80.CLK     Tsrck                 0.910   mouse/bit_count<1>
+                                                       mouse/bit_count_1
+    -------------------------------------------------  ---------------------------
+    Total                                      7.805ns (3.778ns logic, 4.027ns route)
+                                                       (48.4% logic, 51.6% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     12.449ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               mouse/watchdog_timer_count_0 (FF)
+  Destination:          mouse/bit_count_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      7.551ns (Levels of Logic = 3)
+  Clock Path Skew:      0.000ns
+  Source Clock:         CLK_50MHZ_BUFGP rising at 0.000ns
+  Destination Clock:    CLK_50MHZ_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: mouse/watchdog_timer_count_0 to mouse/bit_count_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X49Y80.XQ      Tcko                  0.591   mouse/watchdog_timer_count<0>
+                                                       mouse/watchdog_timer_count_0
+    SLICE_X48Y80.G2      net (fanout=2)        0.533   mouse/watchdog_timer_count<0>
+    SLICE_X48Y80.Y       Tilo                  0.759   mouse/watchdog_timer_done
+                                                       mouse/watchdog_timer_done4
+    SLICE_X48Y80.F1      net (fanout=2)        0.886   mouse/watchdog_timer_done4
+    SLICE_X48Y80.X       Tilo                  0.759   mouse/watchdog_timer_done
+                                                       mouse/watchdog_timer_done53
+    SLICE_X52Y81.F2      net (fanout=5)        0.970   mouse/watchdog_timer_done
+    SLICE_X52Y81.X       Tilo                  0.759   mouse/bit_count_and0000
+                                                       mouse/bit_count_and00001
+    SLICE_X50Y80.SR      net (fanout=4)        1.384   mouse/bit_count_and0000
+    SLICE_X50Y80.CLK     Tsrck                 0.910   mouse/bit_count<1>
+                                                       mouse/bit_count_1
+    -------------------------------------------------  ---------------------------
+    Total                                      7.551ns (3.778ns logic, 3.773ns route)
+                                                       (50.0% logic, 50.0% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     12.465ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               mouse/watchdog_timer_count_3 (FF)
+  Destination:          mouse/bit_count_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      7.535ns (Levels of Logic = 3)
+  Clock Path Skew:      0.000ns
+  Source Clock:         CLK_50MHZ_BUFGP rising at 0.000ns
+  Destination Clock:    CLK_50MHZ_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: mouse/watchdog_timer_count_3 to mouse/bit_count_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X49Y81.YQ      Tcko                  0.587   mouse/watchdog_timer_count<2>
+                                                       mouse/watchdog_timer_count_3
+    SLICE_X48Y80.G1      net (fanout=2)        0.521   mouse/watchdog_timer_count<3>
+    SLICE_X48Y80.Y       Tilo                  0.759   mouse/watchdog_timer_done
+                                                       mouse/watchdog_timer_done4
+    SLICE_X48Y80.F1      net (fanout=2)        0.886   mouse/watchdog_timer_done4
+    SLICE_X48Y80.X       Tilo                  0.759   mouse/watchdog_timer_done
+                                                       mouse/watchdog_timer_done53
+    SLICE_X52Y81.F2      net (fanout=5)        0.970   mouse/watchdog_timer_done
+    SLICE_X52Y81.X       Tilo                  0.759   mouse/bit_count_and0000
+                                                       mouse/bit_count_and00001
+    SLICE_X50Y80.SR      net (fanout=4)        1.384   mouse/bit_count_and0000
+    SLICE_X50Y80.CLK     Tsrck                 0.910   mouse/bit_count<1>
+                                                       mouse/bit_count_1
+    -------------------------------------------------  ---------------------------
+    Total                                      7.535ns (3.774ns logic, 3.761ns route)
+                                                       (50.1% logic, 49.9% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point mouse/bit_count_0 (SLICE_X50Y80.SR), 18 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     12.195ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               mouse/watchdog_timer_count_2 (FF)
+  Destination:          mouse/bit_count_0 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      7.805ns (Levels of Logic = 3)
+  Clock Path Skew:      0.000ns
+  Source Clock:         CLK_50MHZ_BUFGP rising at 0.000ns
+  Destination Clock:    CLK_50MHZ_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: mouse/watchdog_timer_count_2 to mouse/bit_count_0
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X49Y81.XQ      Tcko                  0.591   mouse/watchdog_timer_count<2>
+                                                       mouse/watchdog_timer_count_2
+    SLICE_X48Y80.G4      net (fanout=2)        0.787   mouse/watchdog_timer_count<2>
+    SLICE_X48Y80.Y       Tilo                  0.759   mouse/watchdog_timer_done
+                                                       mouse/watchdog_timer_done4
+    SLICE_X48Y80.F1      net (fanout=2)        0.886   mouse/watchdog_timer_done4
+    SLICE_X48Y80.X       Tilo                  0.759   mouse/watchdog_timer_done
+                                                       mouse/watchdog_timer_done53
+    SLICE_X52Y81.F2      net (fanout=5)        0.970   mouse/watchdog_timer_done
+    SLICE_X52Y81.X       Tilo                  0.759   mouse/bit_count_and0000
+                                                       mouse/bit_count_and00001
+    SLICE_X50Y80.SR      net (fanout=4)        1.384   mouse/bit_count_and0000
+    SLICE_X50Y80.CLK     Tsrck                 0.910   mouse/bit_count<1>
+                                                       mouse/bit_count_0
+    -------------------------------------------------  ---------------------------
+    Total                                      7.805ns (3.778ns logic, 4.027ns route)
+                                                       (48.4% logic, 51.6% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     12.449ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               mouse/watchdog_timer_count_0 (FF)
+  Destination:          mouse/bit_count_0 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      7.551ns (Levels of Logic = 3)
+  Clock Path Skew:      0.000ns
+  Source Clock:         CLK_50MHZ_BUFGP rising at 0.000ns
+  Destination Clock:    CLK_50MHZ_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: mouse/watchdog_timer_count_0 to mouse/bit_count_0
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X49Y80.XQ      Tcko                  0.591   mouse/watchdog_timer_count<0>
+                                                       mouse/watchdog_timer_count_0
+    SLICE_X48Y80.G2      net (fanout=2)        0.533   mouse/watchdog_timer_count<0>
+    SLICE_X48Y80.Y       Tilo                  0.759   mouse/watchdog_timer_done
+                                                       mouse/watchdog_timer_done4
+    SLICE_X48Y80.F1      net (fanout=2)        0.886   mouse/watchdog_timer_done4
+    SLICE_X48Y80.X       Tilo                  0.759   mouse/watchdog_timer_done
+                                                       mouse/watchdog_timer_done53
+    SLICE_X52Y81.F2      net (fanout=5)        0.970   mouse/watchdog_timer_done
+    SLICE_X52Y81.X       Tilo                  0.759   mouse/bit_count_and0000
+                                                       mouse/bit_count_and00001
+    SLICE_X50Y80.SR      net (fanout=4)        1.384   mouse/bit_count_and0000
+    SLICE_X50Y80.CLK     Tsrck                 0.910   mouse/bit_count<1>
+                                                       mouse/bit_count_0
+    -------------------------------------------------  ---------------------------
+    Total                                      7.551ns (3.778ns logic, 3.773ns route)
+                                                       (50.0% logic, 50.0% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     12.465ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               mouse/watchdog_timer_count_3 (FF)
+  Destination:          mouse/bit_count_0 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      7.535ns (Levels of Logic = 3)
+  Clock Path Skew:      0.000ns
+  Source Clock:         CLK_50MHZ_BUFGP rising at 0.000ns
+  Destination Clock:    CLK_50MHZ_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: mouse/watchdog_timer_count_3 to mouse/bit_count_0
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X49Y81.YQ      Tcko                  0.587   mouse/watchdog_timer_count<2>
+                                                       mouse/watchdog_timer_count_3
+    SLICE_X48Y80.G1      net (fanout=2)        0.521   mouse/watchdog_timer_count<3>
+    SLICE_X48Y80.Y       Tilo                  0.759   mouse/watchdog_timer_done
+                                                       mouse/watchdog_timer_done4
+    SLICE_X48Y80.F1      net (fanout=2)        0.886   mouse/watchdog_timer_done4
+    SLICE_X48Y80.X       Tilo                  0.759   mouse/watchdog_timer_done
+                                                       mouse/watchdog_timer_done53
+    SLICE_X52Y81.F2      net (fanout=5)        0.970   mouse/watchdog_timer_done
+    SLICE_X52Y81.X       Tilo                  0.759   mouse/bit_count_and0000
+                                                       mouse/bit_count_and00001
+    SLICE_X50Y80.SR      net (fanout=4)        1.384   mouse/bit_count_and0000
+    SLICE_X50Y80.CLK     Tsrck                 0.910   mouse/bit_count<1>
+                                                       mouse/bit_count_0
+    -------------------------------------------------  ---------------------------
+    Total                                      7.535ns (3.774ns logic, 3.761ns route)
+                                                       (50.1% logic, 49.9% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point mouse/m2_state_1 (SLICE_X52Y84.F4), 72 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     12.209ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               mouse/q_4 (FF)
+  Destination:          mouse/m2_state_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      7.791ns (Levels of Logic = 6)
+  Clock Path Skew:      0.000ns
+  Source Clock:         CLK_50MHZ_BUFGP rising at 0.000ns
+  Destination Clock:    CLK_50MHZ_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: mouse/q_4 to mouse/m2_state_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X50Y85.YQ      Tcko                  0.652   mouse/q<5>
+                                                       mouse/q_4
+    SLICE_X48Y89.F3      net (fanout=2)        0.655   mouse/q<4>
+    SLICE_X48Y89.X       Tilo                  0.759   mouse/Mxor_packet_good_xor0000_xo<0>4
+                                                       mouse/Mxor_packet_good_xor0000_xo<0>4
+    SLICE_X51Y85.F4      net (fanout=1)        0.586   mouse/Mxor_packet_good_xor0000_xo<0>4
+    SLICE_X51Y85.X       Tilo                  0.704   N12
+                                                       mouse/m2_next_state<1>170_SW0
+    SLICE_X47Y85.F3      net (fanout=1)        0.309   N12
+    SLICE_X47Y85.X       Tilo                  0.704   mouse/m2_next_state<1>170
+                                                       mouse/m2_next_state<1>170
+    SLICE_X48Y85.F2      net (fanout=1)        0.398   mouse/m2_next_state<1>170
+    SLICE_X48Y85.X       Tilo                  0.759   N14
+                                                       mouse/m2_next_state<1>240_SW0
+    SLICE_X52Y84.G3      net (fanout=1)        0.591   N14
+    SLICE_X52Y84.Y       Tilo                  0.759   mouse/m2_state<1>
+                                                       mouse/m2_next_state<1>293
+    SLICE_X52Y84.F4      net (fanout=1)        0.023   mouse/m2_next_state<1>293/O
+    SLICE_X52Y84.CLK     Tfck                  0.892   mouse/m2_state<1>
+                                                       mouse/m2_next_state<1>317
+                                                       mouse/m2_state_1
+    -------------------------------------------------  ---------------------------
+    Total                                      7.791ns (5.229ns logic, 2.562ns route)
+                                                       (67.1% logic, 32.9% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     12.278ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               mouse/q_2 (FF)
+  Destination:          mouse/m2_state_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      7.722ns (Levels of Logic = 6)
+  Clock Path Skew:      0.000ns
+  Source Clock:         CLK_50MHZ_BUFGP rising at 0.000ns
+  Destination Clock:    CLK_50MHZ_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: mouse/q_2 to mouse/m2_state_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X48Y88.YQ      Tcko                  0.652   mouse/q<3>
+                                                       mouse/q_2
+    SLICE_X48Y89.F1      net (fanout=3)        0.586   mouse/q<2>
+    SLICE_X48Y89.X       Tilo                  0.759   mouse/Mxor_packet_good_xor0000_xo<0>4
+                                                       mouse/Mxor_packet_good_xor0000_xo<0>4
+    SLICE_X51Y85.F4      net (fanout=1)        0.586   mouse/Mxor_packet_good_xor0000_xo<0>4
+    SLICE_X51Y85.X       Tilo                  0.704   N12
+                                                       mouse/m2_next_state<1>170_SW0
+    SLICE_X47Y85.F3      net (fanout=1)        0.309   N12
+    SLICE_X47Y85.X       Tilo                  0.704   mouse/m2_next_state<1>170
+                                                       mouse/m2_next_state<1>170
+    SLICE_X48Y85.F2      net (fanout=1)        0.398   mouse/m2_next_state<1>170
+    SLICE_X48Y85.X       Tilo                  0.759   N14
+                                                       mouse/m2_next_state<1>240_SW0
+    SLICE_X52Y84.G3      net (fanout=1)        0.591   N14
+    SLICE_X52Y84.Y       Tilo                  0.759   mouse/m2_state<1>
+                                                       mouse/m2_next_state<1>293
+    SLICE_X52Y84.F4      net (fanout=1)        0.023   mouse/m2_next_state<1>293/O
+    SLICE_X52Y84.CLK     Tfck                  0.892   mouse/m2_state<1>
+                                                       mouse/m2_next_state<1>317
+                                                       mouse/m2_state_1
+    -------------------------------------------------  ---------------------------
+    Total                                      7.722ns (5.229ns logic, 2.493ns route)
+                                                       (67.7% logic, 32.3% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     12.372ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               mouse/watchdog_timer_count_2 (FF)
+  Destination:          mouse/m2_state_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      7.628ns (Levels of Logic = 5)
+  Clock Path Skew:      0.000ns
+  Source Clock:         CLK_50MHZ_BUFGP rising at 0.000ns
+  Destination Clock:    CLK_50MHZ_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: mouse/watchdog_timer_count_2 to mouse/m2_state_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X49Y81.XQ      Tcko                  0.591   mouse/watchdog_timer_count<2>
+                                                       mouse/watchdog_timer_count_2
+    SLICE_X48Y80.G4      net (fanout=2)        0.787   mouse/watchdog_timer_count<2>
+    SLICE_X48Y80.Y       Tilo                  0.759   mouse/watchdog_timer_done
+                                                       mouse/watchdog_timer_done4
+    SLICE_X48Y80.F1      net (fanout=2)        0.886   mouse/watchdog_timer_done4
+    SLICE_X48Y80.X       Tilo                  0.759   mouse/watchdog_timer_done
+                                                       mouse/watchdog_timer_done53
+    SLICE_X52Y85.F1      net (fanout=5)        1.303   mouse/watchdog_timer_done
+    SLICE_X52Y85.X       Tilo                  0.759   mouse/m2_next_state<1>123
+                                                       mouse/m2_next_state<1>123
+    SLICE_X52Y84.G2      net (fanout=1)        0.110   mouse/m2_next_state<1>123
+    SLICE_X52Y84.Y       Tilo                  0.759   mouse/m2_state<1>
+                                                       mouse/m2_next_state<1>293
+    SLICE_X52Y84.F4      net (fanout=1)        0.023   mouse/m2_next_state<1>293/O
+    SLICE_X52Y84.CLK     Tfck                  0.892   mouse/m2_state<1>
+                                                       mouse/m2_next_state<1>317
+                                                       mouse/m2_state_1
+    -------------------------------------------------  ---------------------------
+    Total                                      7.628ns (4.519ns logic, 3.109ns route)
+                                                       (59.2% logic, 40.8% route)
+
+--------------------------------------------------------------------------------
+
+Hold Paths: NET "CLK_50MHZ_BUFGP/IBUFG" PERIOD = 20 ns HIGH 40%;
+--------------------------------------------------------------------------------
+
+Paths for end point mouse/x_increment_1 (SLICE_X47Y90.BX), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      1.014ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               mouse/q_13 (FF)
+  Destination:          mouse/x_increment_1 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      1.015ns (Levels of Logic = 0)
+  Clock Path Skew:      0.001ns (0.017 - 0.016)
+  Source Clock:         CLK_50MHZ_BUFGP rising at 20.000ns
+  Destination Clock:    CLK_50MHZ_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: mouse/q_13 to mouse/x_increment_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X46Y88.XQ      Tcko                  0.474   mouse/q<13>
+                                                       mouse/q_13
+    SLICE_X47Y90.BX      net (fanout=3)        0.448   mouse/q<13>
+    SLICE_X47Y90.CLK     Tckdi       (-Th)    -0.093   mouse/x_increment<1>
+                                                       mouse/x_increment_1
+    -------------------------------------------------  ---------------------------
+    Total                                      1.015ns (0.567ns logic, 0.448ns route)
+                                                       (55.9% logic, 44.1% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point mouse/q_28 (SLICE_X47Y84.BY), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      1.015ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               mouse/q_29 (FF)
+  Destination:          mouse/q_28 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      1.015ns (Levels of Logic = 0)
+  Clock Path Skew:      0.000ns
+  Source Clock:         CLK_50MHZ_BUFGP rising at 20.000ns
+  Destination Clock:    CLK_50MHZ_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: mouse/q_29 to mouse/q_28
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X47Y84.XQ      Tcko                  0.473   mouse/q<29>
+                                                       mouse/q_29
+    SLICE_X47Y84.BY      net (fanout=2)        0.407   mouse/q<29>
+    SLICE_X47Y84.CLK     Tckdi       (-Th)    -0.135   mouse/q<29>
+                                                       mouse/q_28
+    -------------------------------------------------  ---------------------------
+    Total                                      1.015ns (0.608ns logic, 0.407ns route)
+                                                       (59.9% logic, 40.1% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point mouse/q_6 (SLICE_X51Y84.BY), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      1.016ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               mouse/q_7 (FF)
+  Destination:          mouse/q_6 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      1.016ns (Levels of Logic = 0)
+  Clock Path Skew:      0.000ns
+  Source Clock:         CLK_50MHZ_BUFGP rising at 20.000ns
+  Destination Clock:    CLK_50MHZ_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: mouse/q_7 to mouse/q_6
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X51Y84.XQ      Tcko                  0.473   mouse/q<7>
+                                                       mouse/q_7
+    SLICE_X51Y84.BY      net (fanout=2)        0.408   mouse/q<7>
+    SLICE_X51Y84.CLK     Tckdi       (-Th)    -0.135   mouse/q<7>
+                                                       mouse/q_6
+    -------------------------------------------------  ---------------------------
+    Total                                      1.016ns (0.608ns logic, 0.408ns route)
+                                                       (59.8% logic, 40.2% route)
+
+--------------------------------------------------------------------------------
+
+Component Switching Limit Checks: NET "CLK_50MHZ_BUFGP/IBUFG" PERIOD = 20 ns HIGH 40%;
+--------------------------------------------------------------------------------
+Slack: 17.935ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 20.000ns
+  High pulse: 8.000ns
+  High pulse limit: 0.826ns (Tch)
+  Physical resource: mouse/m1_state<2>/CLK
+  Logical resource: mouse/m1_state_2/CK
+  Location pin: SLICE_X52Y79.CLK
+  Clock network: CLK_50MHZ_BUFGP
+--------------------------------------------------------------------------------
+Slack: 17.935ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 20.000ns
+  High pulse: 8.000ns
+  High pulse limit: 0.826ns (Tch)
+  Physical resource: mouse/m2_state<0>/CLK
+  Logical resource: mouse/m2_state_0/CK
+  Location pin: SLICE_X54Y80.CLK
+  Clock network: CLK_50MHZ_BUFGP
+--------------------------------------------------------------------------------
+Slack: 17.935ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 20.000ns
+  High pulse: 8.000ns
+  High pulse limit: 0.826ns (Tch)
+  Physical resource: mouse/m2_state<1>/CLK
+  Logical resource: mouse/m2_state_1/CK
+  Location pin: SLICE_X52Y84.CLK
+  Clock network: CLK_50MHZ_BUFGP
+--------------------------------------------------------------------------------
+
+
+All constraints were met.
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Clock to Setup on destination clock CLK_50MHZ
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+CLK_50MHZ      |    7.805|         |         |         |
+---------------+---------+---------+---------+---------+
+
+
+Timing summary:
+---------------
+
+Timing errors: 0  Score: 0  (Setup/Max: 0, Hold: 0)
+
+Constraints cover 1042 paths, 0 nets, and 459 connections
+
+Design statistics:
+   Minimum period:   7.805ns{1}   (Maximum frequency: 128.123MHz)
+
+
+------------------------------------Footnotes-----------------------------------
+1)  The minimum period statistic assumes all single cycle delays.
+
+Analysis completed Thu Aug  4 23:44:13 2011 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 242 MB
+
+
+

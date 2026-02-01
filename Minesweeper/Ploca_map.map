@@ -1,0 +1,73 @@
+Release 14.7 Map P.20131013 (nt64)
+Xilinx Map Application Log File for Design 'Ploca'
+
+Design Information
+------------------
+Command Line   : map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off
+-c 100 -o Ploca_map.ncd Ploca.ngd Ploca.pcf 
+Target Device  : xc3s500e
+Target Package : fg320
+Target Speed   : -5
+Mapper Version : spartan3e -- $Revision: 1.55 $
+Mapped Date    : Wed Jul 09 15:40:21 2025
+
+Mapping design into LUTs...
+Running directed packing...
+WARNING:Pack:266 - The function generator zero_opening_26_mux0000<0>0 failed to
+   merge with F5 multiplexer zero_opening_26_mux0000<0>34.  There is a conflict
+   for the FXMUX.  The design will exhibit suboptimal timing.
+Running delay-based LUT packing...
+Running related packing...
+Running unrelated packing...
+Updating timing models...
+
+Design Summary
+--------------
+
+Design Summary:
+Number of errors:      0
+Number of warnings:    1
+Logic Utilization:
+  Number of Slice Flip Flops:           900 out of   9,312    9%
+  Number of 4 input LUTs:             9,116 out of   9,312   97%
+Logic Distribution:
+  Number of occupied Slices:          4,654 out of   4,656   99%
+    Number of Slices containing only related logic:   4,654 out of   4,654 100%
+    Number of Slices containing unrelated logic:          0 out of   4,654   0%
+      *See NOTES below for an explanation of the effects of unrelated logic.
+  Total Number of 4 input LUTs:       9,158 out of   9,312   98%
+    Number used as logic:             9,116
+    Number used as a route-thru:         42
+
+  The Slice Logic Distribution report is not meaningful if the design is
+  over-mapped for a non-slice resource or if Placement fails.
+
+  Number of bonded IOBs:                 18 out of     232    7%
+  Number of BUFGMUXs:                     2 out of      24    8%
+
+Average Fanout of Non-Clock Nets:                4.10
+
+Peak Memory Usage:  323 MB
+Total REAL time to MAP completion:  8 secs 
+Total CPU time to MAP completion:   8 secs 
+
+NOTES:
+
+   Related logic is defined as being logic that shares connectivity - e.g. two
+   LUTs are "related" if they share common inputs.  When assembling slices,
+   Map gives priority to combine logic that is related.  Doing so results in
+   the best timing performance.
+
+   Unrelated logic shares no connectivity.  Map will only begin packing
+   unrelated logic into a slice once 99% of the slices are occupied through
+   related logic packing.
+
+   Note that once logic distribution reaches the 99% level through related
+   logic packing, this does not mean the device is completely utilized.
+   Unrelated logic packing will then begin, continuing until all usable LUTs
+   and FFs are occupied.  Depending on your timing budget, increased levels of
+   unrelated logic packing may adversely affect the overall timing performance
+   of your design.
+
+Mapping completed.
+See MAP report file "Ploca_map.mrp" for details.

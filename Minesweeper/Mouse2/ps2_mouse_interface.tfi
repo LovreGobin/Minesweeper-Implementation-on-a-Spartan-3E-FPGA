@@ -1,0 +1,19 @@
+
+
+
+// Instantiate the module
+ps2_mouse_interface instance_name (
+    .clk(clk), 
+    .reset(reset), 
+    .ps2_clk(ps2_clk), 
+    .ps2_data(ps2_data), 
+    .left_button(left_button), 
+    .right_button(right_button), 
+    .x_increment(x_increment), 
+    .y_increment(y_increment), 
+    .data_ready(data_ready), 
+    .read(read), 
+    .error_no_ack(error_no_ack)
+    );
+
+

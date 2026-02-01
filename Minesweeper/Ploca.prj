@@ -1,0 +1,8 @@
+verilog work "ps2_tx.v"
+verilog work "ps2_rx.v"
+verilog work "ps2_rxtx.v"
+verilog work "mouse.v"
+verilog work "grid_click_right.v"
+verilog work "grid_click.v"
+verilog work "Flags.v"
+verilog work "Ploca.v"

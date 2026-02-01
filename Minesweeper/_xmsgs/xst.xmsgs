@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Ploca.v&quot; line 920 </arg>Connection to input port &apos;<arg fmt="%s" index="2">h_pos</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Ploca.v&quot; line 921 </arg>Connection to input port &apos;<arg fmt="%s" index="2">v_pos</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Ploca.v&quot; line 928 </arg>Connection to input port &apos;<arg fmt="%s" index="2">h_pos</arg>&apos; does not match port size
+</msg>
+
+<msg type="warning" file="HDLCompilers" num="259" delta="old" ><arg fmt="%s" index="1">&quot;Ploca.v&quot; line 929 </arg>Connection to input port &apos;<arg fmt="%s" index="2">v_pos</arg>&apos; does not match port size
+</msg>
+
+<msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">polje</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+</msg>
+
+<msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">polje</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+</msg>
+
+<msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">polje</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+</msg>
+
+<msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">polje</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+</msg>
+
+<msg type="info" file="Xst" num="1432" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">$COND_52</arg>&gt; may be accessed with a negative index, causing simulation mismatch.
+</msg>
+
+<msg type="info" file="Xst" num="1432" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">$COND_54</arg>&gt; may be accessed with a negative index, causing simulation mismatch.
+</msg>
+
+<msg type="info" file="Xst" num="1432" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">$COND_56</arg>&gt; may be accessed with a negative index, causing simulation mismatch.
+</msg>
+
+<msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">cell_state</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+</msg>
+
+<msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">polje</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+</msg>
+
+<msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">cell_state</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+</msg>
+
+<msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">polje</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+</msg>
+
+<msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">cell_state</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+</msg>
+
+<msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">polje</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+</msg>
+
+<msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">cell_state</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+</msg>
+
+<msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">polje</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+</msg>
+
+<msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">cell_state</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+</msg>
+
+<msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">polje</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+</msg>
+
+<msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">cell_state</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+</msg>
+
+<msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">polje</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+</msg>
+
+<msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">cell_state</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+</msg>
+
+<msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">polje</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+</msg>
+
+<msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">cell_state</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+</msg>
+
+<msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">polje</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+</msg>
+
+<msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">cell_state</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+</msg>
+
+<msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">polje</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+</msg>
+
+<msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">cell_state</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+</msg>
+
+<msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">polje</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+</msg>
+
+<msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">cell_state</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+</msg>
+
+<msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">grid_state2</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+</msg>
+
+<msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">cell_state</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+</msg>
+
+<msg type="info" file="Xst" num="1433" delta="old" >Contents of array &lt;<arg fmt="%s" index="1">cell_state</arg>&gt; may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+</msg>
+
+<msg type="warning" file="Xst" num="790" delta="new" >&quot;<arg fmt="%s" index="1">Flags.v</arg>&quot; line <arg fmt="%d" index="2">49</arg>: Index value(s) does not match array range, simulation mismatch.
+</msg>
+
+<msg type="info" file="Xst" num="2679" delta="new" >Register &lt;<arg fmt="%s" index="1">h</arg>&gt; in unit &lt;<arg fmt="%s" index="2">Ploca</arg>&gt; has a constant value of <arg fmt="%s" index="3">1000000</arg> during circuit operation. The register is replaced by logic.
+</msg>
+
+<msg type="info" file="Xst" num="2679" delta="new" >Register &lt;<arg fmt="%s" index="1">o</arg>&gt; in unit &lt;<arg fmt="%s" index="2">Ploca</arg>&gt; has a constant value of <arg fmt="%s" index="3">1000000</arg> during circuit operation. The register is replaced by logic.
+</msg>
+
+<msg type="info" file="Xst" num="2679" delta="new" >Register &lt;<arg fmt="%s" index="1">i</arg>&gt; in unit &lt;<arg fmt="%s" index="2">Ploca</arg>&gt; has a constant value of <arg fmt="%s" index="3">1000000</arg> during circuit operation. The register is replaced by logic.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="new" >Signal &lt;<arg fmt="%s" index="1">cell_index&lt;6&gt;</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1781" delta="new" >Signal &lt;<arg fmt="%s" index="1">font_rom</arg>&gt; is used but never assigned. Tied to default value.
+</msg>
+
+<msg type="info" file="Xst" num="2117" delta="new" >HDL ADVISOR - Mux Selector &lt;<arg fmt="%s" index="1">state_reg</arg>&gt; of Case statement line <arg fmt="%s" index="2">79</arg> was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
+	- add an &apos;<arg fmt="%s" index="3">INIT</arg>&apos; attribute on signal &lt;<arg fmt="%s" index="4">state_reg</arg>&gt; (optimization is then done without any risk)
+	- use the attribute &apos;<arg fmt="%s" index="5">signal_encoding</arg> <arg fmt="%s" index="6">user</arg>&apos; to avoid onehot optimization
+	- use the attribute &apos;<arg fmt="%s" index="7">safe_implementation</arg> <arg fmt="%s" index="8">yes</arg>&apos; to force XST to perform a safe (but less efficient) optimization
+</msg>
+
+<msg type="warning" file="Xst" num="1780" delta="new" >Signal &lt;<arg fmt="%s" index="1">units</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="new" >Signal &lt;<arg fmt="%s" index="1">timer_pixel</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1781" delta="new" >Signal &lt;<arg fmt="%s" index="1">three</arg>&gt; is used but never assigned. Tied to default value.
+</msg>
+
+<msg type="warning" file="Xst" num="1780" delta="new" >Signal &lt;<arg fmt="%s" index="1">tens</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1780" delta="new" >Signal &lt;<arg fmt="%s" index="1">susjedniBr</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1781" delta="new" >Signal &lt;<arg fmt="%s" index="1">smiley_rom2</arg>&gt; is used but never assigned. Tied to default value.
+</msg>
+
+<msg type="warning" file="Xst" num="1781" delta="new" >Signal &lt;<arg fmt="%s" index="1">smiley_rom</arg>&gt; is used but never assigned. Tied to default value.
+</msg>
+
+<msg type="warning" file="Xst" num="1781" delta="new" >Signal &lt;<arg fmt="%s" index="1">six</arg>&gt; is used but never assigned. Tied to default value.
+</msg>
+
+<msg type="warning" file="Xst" num="1781" delta="new" >Signal &lt;<arg fmt="%s" index="1">seven</arg>&gt; is used but never assigned. Tied to default value.
+</msg>
+
+<msg type="warning" file="Xst" num="1780" delta="new" >Signal &lt;<arg fmt="%s" index="1">nula_num</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1781" delta="new" >Signal &lt;<arg fmt="%s" index="1">nula</arg>&gt; is used but never assigned. Tied to default value.
+</msg>
+
+<msg type="warning" file="Xst" num="1780" delta="new" >Signal &lt;<arg fmt="%s" index="1">nine</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1781" delta="new" >Signal &lt;<arg fmt="%s" index="1">mine_rom</arg>&gt; is used but never assigned. Tied to default value.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="new" >Signal &lt;<arg fmt="%s" index="1">mine_count</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1780" delta="new" >Signal &lt;<arg fmt="%s" index="1">line</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1872" delta="new" >Variable &lt;<arg fmt="%s" index="1">k</arg>&gt; is used but never assigned.
+</msg>
+
+<msg type="warning" file="Xst" num="1781" delta="new" >Signal &lt;<arg fmt="%s" index="1">jedan</arg>&gt; is used but never assigned. Tied to default value.
+</msg>
+
+<msg type="warning" file="Xst" num="1780" delta="new" >Signal &lt;<arg fmt="%s" index="1">init_counter</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="new" >Signal &lt;<arg fmt="%s" index="1">grid_state</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="new" >Signal &lt;<arg fmt="%s" index="1">grid_done</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1781" delta="new" >Signal &lt;<arg fmt="%s" index="1">four</arg>&gt; is used but never assigned. Tied to default value.
+</msg>
+
+<msg type="warning" file="Xst" num="1780" delta="new" >Signal &lt;<arg fmt="%s" index="1">found_one</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1781" delta="new" >Signal &lt;<arg fmt="%s" index="1">flag_16x16</arg>&gt; is used but never assigned. Tied to default value.
+</msg>
+
+<msg type="warning" file="Xst" num="1781" delta="new" >Signal &lt;<arg fmt="%s" index="1">flag</arg>&gt; is used but never assigned. Tied to default value.
+</msg>
+
+<msg type="warning" file="Xst" num="1781" delta="new" >Signal &lt;<arg fmt="%s" index="1">five</arg>&gt; is used but never assigned. Tied to default value.
+</msg>
+
+<msg type="warning" file="Xst" num="1781" delta="new" >Signal &lt;<arg fmt="%s" index="1">eight</arg>&gt; is used but never assigned. Tied to default value.
+</msg>
+
+<msg type="warning" file="Xst" num="1781" delta="new" >Signal &lt;<arg fmt="%s" index="1">dva</arg>&gt; is used but never assigned. Tied to default value.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="new" >Signal &lt;<arg fmt="%s" index="1">current_index&lt;6&gt;</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="new" >Signal &lt;<arg fmt="%s" index="1">current_idx&lt;6&gt;</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="new" >Signal &lt;<arg fmt="%s" index="1">current_cell_state</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1780" delta="new" >Signal &lt;<arg fmt="%s" index="1">clicked_cell</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1780" delta="new" >Signal &lt;<arg fmt="%s" index="1">check</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1781" delta="new" >Signal &lt;<arg fmt="%s" index="1">arrow_rom</arg>&gt; is used but never assigned. Tied to default value.
+</msg>
+
+<msg type="info" file="Xst" num="738" delta="new" >HDL ADVISOR - <arg fmt="%d" index="1">256</arg> flip-flops were inferred for signal &lt;<arg fmt="%s" index="2">polje</arg>&gt;. You may be trying to describe a RAM in a way that is incompatible with block and distributed RAM resources available on Xilinx devices, or with a specific template that is not supported. Please review the Xilinx resources documentation and the XST user manual for coding guidelines. Taking advantage of RAM resources will lead to improved device usage and reduced synthesis time.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">b_reg_8</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ps2_tx_unit</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">b_reg_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">ps2_rx_unit</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">x_reg_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mouse_unit</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">y_reg_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mouse_unit</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">b_reg_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">ps2_rx</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">grid_row_sync_3</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">b_reg_8</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ps2_tx</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">mouse_unit/y_reg_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">mouse_unit/x_reg_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">col_3</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">Ploca</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_1</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_2</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_3</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_8</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_10</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_11</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_9</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_12</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_13</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_14</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_15</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_16</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_17</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_19</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_20</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_18</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_21</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_22</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_23</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_24</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_25</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_26</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_28</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_29</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_27</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_30</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_31</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_32</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_33</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_34</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_35</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_36</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_37</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_38</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_39</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_40</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_41</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_42</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_43</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_45</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_46</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_44</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_47</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_48</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_49</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_50</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_51</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_52</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_54</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_55</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_53</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_56</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_57</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_58</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_59</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_60</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_61</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_63</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">click_unit/grid_state_62</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">Ploca</arg>&gt;.
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">mouse_unit/ps2_unit/ps2_tx_unit/filter_reg_7</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">Ploca</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;mouse_unit/ps2_unit/ps2_rx_unit/filter_reg_7&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">mouse_unit/ps2_unit/ps2_tx_unit/filter_reg_6</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">Ploca</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;mouse_unit/ps2_unit/ps2_rx_unit/filter_reg_6&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">mouse_unit/ps2_unit/ps2_tx_unit/filter_reg_5</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">Ploca</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;mouse_unit/ps2_unit/ps2_rx_unit/filter_reg_5&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">mouse_unit/ps2_unit/ps2_tx_unit/filter_reg_4</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">Ploca</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;mouse_unit/ps2_unit/ps2_rx_unit/filter_reg_4&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">mouse_unit/ps2_unit/ps2_tx_unit/filter_reg_3</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">Ploca</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;mouse_unit/ps2_unit/ps2_rx_unit/filter_reg_3&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">mouse_unit/ps2_unit/ps2_tx_unit/filter_reg_2</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">Ploca</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;mouse_unit/ps2_unit/ps2_rx_unit/filter_reg_2&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">mouse_unit/ps2_unit/ps2_tx_unit/filter_reg_1</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">Ploca</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;mouse_unit/ps2_unit/ps2_rx_unit/filter_reg_1&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">mouse_unit/ps2_unit/ps2_tx_unit/filter_reg_0</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">Ploca</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;mouse_unit/ps2_unit/ps2_rx_unit/filter_reg_0&gt; </arg>
+</msg>
+
+<msg type="warning" file="Xst" num="1336" delta="new" > (*) More than 100% of Device resources are used
+</msg>
+
+</messages>
+

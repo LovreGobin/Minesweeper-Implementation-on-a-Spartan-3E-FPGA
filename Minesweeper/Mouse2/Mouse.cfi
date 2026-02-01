@@ -1,0 +1,11 @@
+# PROMGEN: Xilinx Prom Generator M.53d
+# Copyright (c) 1995-2010 Xilinx, Inc.  All rights reserved.
+
+SOFTWARE_VERSION M.53d
+DATE             8/ 4/2011 - 23:50
+SOURCE          /home/george/Electronics/FPGA/Mouse2/Mouse.mcs
+DEVICE          XCF04S
+DATA_WIDTH      8
+FILL_DATA       0xFF
+SIGNATURE       0x03AA25A9
+START_ADDRESS   0x00000000 END_ADDRESS 0x0004547F DIRECTION_UP   "/home/george/Electronics/FPGA/Mouse2/Mouse_Test.bit" 3s500efg320

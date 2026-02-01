@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=/home/george/Electronics/FPGA/Mouse2/Mouse_Test.ncd
+OUTFILE=/home/george/Electronics/FPGA/Mouse2/Mouse_Test.bit
+FAMILY=Spartan3E
+PART=xc3s500e-4fg320
+WORKINGDIR=/home/george/Electronics/FPGA/Mouse2
+LICENSE=ISE
+USER_INFO=175890281_0_0_206
