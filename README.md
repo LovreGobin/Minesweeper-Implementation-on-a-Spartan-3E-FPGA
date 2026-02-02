@@ -1,4 +1,10 @@
-DESCRIPTION OF USED HARDWARE AND SOFTWARE
+# Minesweeper on FPGA
+
+**Faculty of Electrical Engineering, Mechanical Engineering and Naval Architecture**
+
+**Authors:** Mateo Franjić, Lovre Gobin, Marko Grubišić
+
+# DESCRIPTION OF USED HARDWARE AND SOFTWARE
 
 In this section of the paper, the hardware and software components used in the development of the Minesweeper game for a VGA display are presented. The central element of the system is the Xilinx Spartan-3E FPGA chip. This development board provides the necessary resources for implementing more complex digital circuits, including VGA output, input buttons, LEDs, and other peripherals useful for development.
 
@@ -59,7 +65,7 @@ DIP Switches: Small switches used for board configuration, mode selection, or as
 
 Potentiometer and 4 Push Buttons: The potentiometer provides analog input (e.g., speed or brightness adjustment), while the buttons serve as digital user inputs.
 
-MINESWEEPER
+# MINESWEEPER
 
 The game code was written in Verilog HDL (Hardware Description Language), which is used for modeling and designing digital systems. Synthesis and FPGA programming are enabled through the Xilinx ISE Design Suite software. The image below shows the beginning of the code and the definition of the “Ploca” module.
 
@@ -109,7 +115,7 @@ The final part assigns color values to VGA_R, VGA_G, and VGA_B outputs. Renderin
 
 <img width="612" height="1269" alt="image" src="https://github.com/user-attachments/assets/5aef618c-e9f5-44f4-bfe2-60eb5e18bd85" />
 
-CONCLUSION
+# CONCLUSION
 
 The project of implementing the Minesweeper game on an FPGA platform using VGA output and a PS/2 mouse proved to be both challenging and educational. Through this project, we demonstrated how a functional video game can be realized using digital logic, the Verilog language, and basic peripheral devices.
 
