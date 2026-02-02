@@ -117,9 +117,11 @@ The final part assigns color values to VGA_R, VGA_G, and VGA_B outputs. Renderin
 
 # RESULTS
 
-Examples of won and lost games are shown below.
+Example of won game.
 
 <img width="612" height="1269" alt="image" src="https://github.com/user-attachments/assets/ad9516d2-d3cb-4274-bdfb-ca15648e627e" />
+
+Example of lost game.
 
 <img width="612" height="1269" alt="image" src="https://github.com/user-attachments/assets/dab1497e-00c9-41fc-9cdb-40a8321f6981" />
 
