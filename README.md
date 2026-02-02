@@ -115,6 +115,14 @@ The final part assigns color values to VGA_R, VGA_G, and VGA_B outputs. Renderin
 
 <img width="612" height="1269" alt="image" src="https://github.com/user-attachments/assets/5aef618c-e9f5-44f4-bfe2-60eb5e18bd85" />
 
+# RESULTS
+
+Examples of won and lost games are shown below.
+
+<img width="612" height="1269" alt="image" src="https://github.com/user-attachments/assets/ad9516d2-d3cb-4274-bdfb-ca15648e627e" />
+
+<img width="612" height="1269" alt="image" src="https://github.com/user-attachments/assets/dab1497e-00c9-41fc-9cdb-40a8321f6981)" />
+
 # CONCLUSION
 
 The project of implementing the Minesweeper game on an FPGA platform using VGA output and a PS/2 mouse proved to be both challenging and educational. Through this project, we demonstrated how a functional video game can be realized using digital logic, the Verilog language, and basic peripheral devices.
